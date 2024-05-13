@@ -1,0 +1,13 @@
+.main {
+  min-height: 85vh;
+}
+
+.carousel {
+  height: 50vh;
+}
+
+.carousel img {
+  height: 50vh;
+  object-fit: cover;
+  
+}
