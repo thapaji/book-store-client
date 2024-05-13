@@ -9,14 +9,19 @@ const Home = () => {
     <DefaultLayout>
       <CustomCarousel />
       {/******************* book list **************/}
-      <Container>
+      <Container className="mt-5">
         <Row>
           <Col>
             <label htmlFor="">20 books found!!</label>
+          </Col>
+          <Col lg={3}>
             <div>
               <Form.Control placeholder="search by book name .." />
             </div>
           </Col>
+        </Row>
+        <hr />
+        <Row>
           <Col>
             <CustomCard />
           </Col>
