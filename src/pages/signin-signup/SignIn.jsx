@@ -13,12 +13,14 @@ const SignIn = () => {
     e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-    console.log(email, password);
+    // console.log(email, password);
     if (!email || !password) {
       return toast.error("Please fill all fields");
     }
-    const result = await loginUser({ email, password });
-    console.log(result);
+    const { status, message,tokens } = await loginUser({ email, password });
+    toast[status](message);
+    sessionStorage.setItem('accessJWT',tokens.accessJWT);
+    localStorage.setItem('refreshJWT',tokens.refreshJWT);
   };
 
   const inputs = [
