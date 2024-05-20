@@ -2,16 +2,23 @@ import React, { useRef } from "react";
 import { DefaultLayout } from "../../components/layout/DefaultLayout";
 import { Form, Button, Col, Row } from "react-bootstrap";
 import { CustomInput } from "../../components/customInput/CustomInput";
+import { toast } from "react-toastify";
+import { loginUser } from "../../helpers/axiosHelper";
 
 const SignIn = () => {
   const emailRef = useRef("");
   const passwordRef = useRef("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
     console.log(email, password);
+    if (!email || !password) {
+      return toast.error("Please fill all fields");
+    }
+    const result = await loginUser({ email, password });
+    console.log(result);
   };
 
   const inputs = [
