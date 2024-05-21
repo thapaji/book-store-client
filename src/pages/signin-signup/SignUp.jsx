@@ -3,7 +3,7 @@ import { DefaultLayout } from "../../components/layout/DefaultLayout";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { CustomInput } from "../../components/customInput/CustomInput";
 import { toast } from "react-toastify";
-import { postNewUser } from "../../helpers/axiosHelper";
+import { postNewUser } from "../../features/users/userAxios";
 
 const SignUp = () => {
   const [form, setForm] = useState({});

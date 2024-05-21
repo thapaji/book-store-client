@@ -3,7 +3,7 @@ import { DefaultLayout } from "../../components/layout/DefaultLayout";
 import { Form, Button, Col, Row } from "react-bootstrap";
 import { CustomInput } from "../../components/customInput/CustomInput";
 import { toast } from "react-toastify";
-import { loginUser } from "../../helpers/axiosHelper";
+import { loginUser } from "../../features/users/userAxios";
 
 const SignIn = () => {
   const emailRef = useRef("");
