@@ -4,9 +4,12 @@ const rootAPI = import.meta.env.VITE_APP_ROOTAPI;
 const userEp = rootAPI + "/users";
 
 
-export const apiProcessor = async ({ method, url, data }) => {
+export const apiProcessor = async ({ method, url, data, isPrivate }) => {
+  const headers = {
+    Authorization: isPrivate ? getAccessJWT() : null,
+  }
   try {
-    const response = await axios({ method, url, data });
+    const response = await axios({ method, url, data, headers });
     return response.data;
   } catch (error) {
     console.log(error);
@@ -15,4 +18,8 @@ export const apiProcessor = async ({ method, url, data }) => {
       message: error.message,
     };
   }
+}
+
+const getAccessJWT = () => {
+  return sessionStorage.getItem('accessJWT');
 }

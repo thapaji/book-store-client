@@ -7,7 +7,7 @@ import SignIn from "./pages/signin-signup/SignIn";
 import SignUp from "./pages/signin-signup/SignUp";
 import Product from "./pages/product/Product";
 import Dashboard from "./pages/dashboard/Dashboard";
-import './App.css'
+import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
