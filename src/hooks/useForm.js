@@ -7,11 +7,6 @@ const handleChange = ({ e, form, setForm }) => {
     setForm({ ...form, [name]: value });
 };
 
-const handleSubmit = ({ e, form, setForm }) => {
-    e.preventDefault();
-    toast.success('Form Submitted');
-    console.log(form);
-};
 
 const useForm = () => {
     const [form, setForm] = useState({});
@@ -19,7 +14,6 @@ const useForm = () => {
     return {
         form,
         handleChange: (e) => handleChange({ e, form, setForm }),
-        handleSubmit: (e) => handleSubmit({ e, form, setForm }),
     }
 }
 

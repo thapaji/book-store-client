@@ -5,9 +5,18 @@ import { Button, Form } from "react-bootstrap";
 import { CustomInput } from "../../components/customInput/CustomInput";
 import useForm from "../../hooks/useForm";
 import { inputs } from "../../assets/formInputs";
+import { postNewBookAction } from "./bookAction";
+import { useDispatch } from "react-redux";
 
 const AddNewBook = () => {
-  const { form, handleChange, handleSubmit } = useForm();
+  const { form, handleChange } = useForm();
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(postNewBookAction(form));
+    console.log(form);
+  };
 
   return (
     <UserLayout pageTitle={"New Book"}>
