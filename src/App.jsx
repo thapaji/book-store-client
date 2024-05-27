@@ -8,6 +8,8 @@ import SignUp from "./pages/signin-signup/SignUp";
 import Product from "./pages/product/Product";
 import Dashboard from "./pages/dashboard/Dashboard";
 import "./App.css";
+import BookList from "./pages/book/BookList";
+import AddNewBook from "./pages/book/AddNewBook";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -23,6 +25,8 @@ function App() {
 
         {/***************     Private Pages        ******************/}
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/admin/books/list" element={<BookList />} />
+        <Route path="/admin/books/new" element={<AddNewBook />} />
       </Routes>
       <ToastContainer />
     </>
