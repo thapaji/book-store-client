@@ -1,11 +1,22 @@
-import React from "react";
-import { Table } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { Button, Table } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllBooksAction } from "../../features/books/bookAction";
+import { Link } from "react-router-dom";
 
 export const BookTable = () => {
+  const dispatch = useDispatch();
+  const isPrivate = true;
+  const { books } = useSelector((state) => state.bookInfo);
+
+  useEffect(() => {
+    dispatch(getAllBooksAction(isPrivate));
+  }, [dispatch]);
+
   return (
     <>
       <div className="d-flex justify-content-between mb-4">
-        <div>30 books found</div>
+        <div>{books.length} books found</div>
         <div>
           <input type="text" className="form-control" />
         </div>
@@ -15,29 +26,39 @@ export const BookTable = () => {
         <thead>
           <tr>
             <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
+            <th>Thumbnail</th>
+            <th>Book</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colSpan={2}>Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          {books.map((book, i) => (
+            <tr key={book._id}>
+              <td>{i + 1}</td>
+              <td>
+                <img src={book.thumbnail} alt="book" width="70px" />
+              </td>
+              <td>
+                <h2>{book.title}</h2>
+                <div>{book.author}</div>
+                <div>{book.author}</div>
+                <div className={book.status === "active" ? "text-success" : "text-danger"}>
+                  Status: {book.status}
+                </div>
+              </td>
+              <td>
+                <Link to={"/admin/book/edit/" + book._id}>
+                  <Button variant="warning">Edit</Button>
+                </Link>
+                <Button
+                  variant="success"
+                  style={{ display: book.status === "active" ? "none" : "" }}
+                >
+                  Activate
+                </Button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     </>

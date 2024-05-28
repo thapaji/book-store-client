@@ -5,7 +5,7 @@ import { Button, Form } from "react-bootstrap";
 import { CustomInput } from "../../components/customInput/CustomInput";
 import useForm from "../../hooks/useForm";
 import { inputs } from "../../assets/formInputs";
-import { postNewBookAction } from "./bookAction";
+import { postNewBookAction } from "../../features/books/bookAction";
 import { useDispatch } from "react-redux";
 
 const AddNewBook = () => {

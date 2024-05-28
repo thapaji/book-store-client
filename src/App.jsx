@@ -10,6 +10,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import "./App.css";
 import BookList from "./pages/book/BookList";
 import AddNewBook from "./pages/book/AddNewBook";
+import EditBook from "./pages/book/EditBook";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -27,6 +28,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/admin/books/list" element={<BookList />} />
         <Route path="/admin/books/new" element={<AddNewBook />} />
+        <Route path="/admin/book/edit/:_id" element={<EditBook />} />
       </Routes>
       <ToastContainer />
     </>
