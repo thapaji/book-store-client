@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { postNewBook, fetchBooks, fetchSingleBook } from "./bookAxios"
+import { postNewBook, fetchBooks, fetchSingleBook, updateBook } from "./bookAxios"
 import { setBooks, setSelectedBook } from "./bookSlice";
 
 export const postNewBookAction = (book) => async (dispatch) => {
@@ -24,4 +24,14 @@ export const getSingleBookAction = (_id) => async (dispatch) => {
     if (status) {
         dispatch(setSelectedBook(book));
     }
+}
+
+export const updateBookAction = (book) => async (dispatch) => {
+    const pending = updateBook(book);
+    toast.promise(pending, {
+        pending: "Updating your Book....."
+    })
+    const { status, message } = await pending;
+    toast[status](message);
+    console.log(message)
 }

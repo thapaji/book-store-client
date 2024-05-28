@@ -18,3 +18,8 @@ export const fetchSingleBook = async (_id) => {
     const axiosObj = { method: 'GET', url: bookEp + '/' + _id };
     return await apiProcessor(axiosObj);
 };
+
+export const updateBook = async (book) => {
+    const axiosObj = { method: 'PUT', url: bookEp, data: book, isPrivate: true };
+    return await apiProcessor(axiosObj);
+};
