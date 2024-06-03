@@ -4,7 +4,7 @@ import { Form, Button, Col, Row } from "react-bootstrap";
 import { CustomInput } from "../../components/customInput/CustomInput";
 import { toast } from "react-toastify";
 import { loginUser } from "../../features/users/userAxios";
-import { getUserObj } from "../../features/users/userAction";
+import { getUserObj, login } from "../../features/users/userAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -28,13 +28,7 @@ const SignIn = () => {
     if (!email || !password) {
       return toast.error("Please fill all fields");
     }
-    const { status, message, tokens } = await loginUser({ email, password });
-    toast[status](message);
-    sessionStorage.setItem("accessJWT", tokens.accessJWT);
-    localStorage.setItem("refreshJWT", tokens.refreshJWT);
-    if (status === "success") {
-      dispatch(getUserObj());
-    }
+    const status = login(dispatch, { email, password });
   };
 
   const inputs = [
