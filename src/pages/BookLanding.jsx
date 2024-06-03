@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { DefaultLayout } from "../components/layout/DefaultLayout";
 import { Button, Col, Nav, Row, Tab, Tabs } from "react-bootstrap";
+import { ReviewBlock } from "../components/customCard/ReviewBlock";
 
 const BookLanding = () => {
   const { _id } = useParams();
@@ -13,13 +14,16 @@ const BookLanding = () => {
   return (
     <DefaultLayout>
       <Row>
-        <Col lg={4}>
-          <img src={book.thumbnail} alt="book" width={"60%"} />
+        <Col md={6}>
+          <img src={book.thumbnail} alt="book" style={{ maxWidth: "450px" }} />
         </Col>
-        <Col className="col">
+        <Col md={6} className="col">
           <h1>{book.title}</h1>
-          <h3>{book.author}</h3>
-          <p>{book.description}</p>
+          <p>
+            {book.author} - {book.publishedYear}
+          </p>
+          <p>******</p>
+          <p>{book.description.slice(0, 50)}...</p>
           <Button variant="warning">Borrow Book Now</Button>
         </Col>
       </Row>
@@ -28,15 +32,13 @@ const BookLanding = () => {
           <Tab eventKey="description" title="Description">
             <div className="p-3">
               <h3>Description</h3>
-              <p>
-                {book.description}
-              </p>
+              <p>{book.description}</p>
             </div>
           </Tab>
           <Tab eventKey="reviews" title="Reviews">
             <div className="p-3">
               <h3>Reviews</h3>
-              <p>This is the reviews content. Here you can display user reviews or feedback.</p>
+              <ReviewBlock />
             </div>
           </Tab>
         </Tabs>
