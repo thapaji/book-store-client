@@ -1,16 +1,25 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { DefaultLayout } from "../components/layout/DefaultLayout";
 import { Button, Col, Nav, Row, Tab, Tabs } from "react-bootstrap";
 import { ReviewBlock } from "../components/customCard/ReviewBlock";
 import { Stars } from "../components/stars/Stars";
+import { postNewBorrowAction } from "../features/borrow/borrowAction";
 
 const BookLanding = () => {
   const { _id } = useParams();
 
   const { books } = useSelector((state) => state.bookInfo);
   const book = books.find((book) => book._id === _id);
+
+  const handleBookBorrow = () => {
+    if (window.confirm("Are you sure you want to borrow this book?")) {
+      dispatchEvent(
+        postNewBorrowAction({ bookId: book._id, bookTitle: book.title, thumbnail: book.thumbnail })
+      );
+    }
+  };
 
   return (
     <DefaultLayout>
@@ -25,7 +34,15 @@ const BookLanding = () => {
           </p>
           <Stars stars={3.5} />
           <p>{book.description.slice(0, 50)}...</p>
-          <Button variant="warning">Borrow Book Now</Button>
+          {user?._id ? (
+            <Button variant="warning" onClick={handleBookBorrow}>
+              Borrow Book Now
+            </Button>
+          ) : (
+            <Link>
+              (<Button variant="warning">Login to borrow</Button>
+            </Link>
+          )}
         </Col>
       </Row>
       <Row className="mt-5">
