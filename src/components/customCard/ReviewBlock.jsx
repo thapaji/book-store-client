@@ -1,5 +1,6 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
+import { Stars } from "../stars/Stars";
 
 export const ReviewBlock = () => {
   return (
@@ -14,7 +15,7 @@ export const ReviewBlock = () => {
         Person Name
       </Row>
       <Row>
-        <Col>stats</Col> <Col>title</Col>{" "}
+        <Stars /> <Col>title</Col>{" "}
       </Row>
       <Row>
         <small>Date:24-04-20024</small>

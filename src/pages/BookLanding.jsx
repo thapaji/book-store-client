@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { DefaultLayout } from "../components/layout/DefaultLayout";
 import { Button, Col, Nav, Row, Tab, Tabs } from "react-bootstrap";
 import { ReviewBlock } from "../components/customCard/ReviewBlock";
+import { Stars } from "../components/stars/Stars";
 
 const BookLanding = () => {
   const { _id } = useParams();
@@ -22,7 +23,7 @@ const BookLanding = () => {
           <p>
             {book.author} - {book.publishedYear}
           </p>
-          <p>******</p>
+          <Stars stars={3.5} />
           <p>{book.description.slice(0, 50)}...</p>
           <Button variant="warning">Borrow Book Now</Button>
         </Col>
