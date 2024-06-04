@@ -6,7 +6,7 @@ const initialState = {
 }
 
 const borrowslice = createSlice({
-    name: 'borrow',
+    name: 'borrows',
     initialState,
     reducers: {
         setBorrows: (state, { payload }) => {

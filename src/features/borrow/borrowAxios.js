@@ -10,7 +10,7 @@ export const postNewBorrow = async (borrow) => {
 };
 
 export const fetchBorrows = async (isPrivate) => {
-    const axiosObj = { method: 'GET', url: isPrivate ? borrowEp + '/all' : borrowEp, isPrivate: true };
+    const axiosObj = { method: 'GET', url: borrowEp, isPrivate: true };
     return await apiProcessor(axiosObj);
 };
 
@@ -19,7 +19,7 @@ export const fetchSingleBorrow = async (_id) => {
     return await apiProcessor(axiosObj);
 };
 
-export const updateBorrow = async (borrow) => {
+export const returnBook = async (borrow) => {
     const axiosObj = { method: 'PUT', url: borrowEp, data: borrow, isPrivate: true };
     return await apiProcessor(axiosObj);
 };

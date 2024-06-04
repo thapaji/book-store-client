@@ -39,6 +39,7 @@ const BookLanding = () => {
           {user?._id ? (
             <Button variant="warning" onClick={handleBookBorrow}>
               Borrow Book Now
+              {/* {book?.isAvailable?"Borrow Book Now":"Expected Available  Date : "+book?.expectedAvailable.slice(0,10)}  */}
             </Button>
           ) : (
             <Link to="/signin" state={{ from: { location } }}>
