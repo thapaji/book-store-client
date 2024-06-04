@@ -1,6 +1,6 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { DefaultLayout } from "../components/layout/DefaultLayout";
 import { Button, Col, Nav, Row, Tab, Tabs } from "react-bootstrap";
 import { ReviewBlock } from "../components/customCard/ReviewBlock";
@@ -9,14 +9,16 @@ import { postNewBorrowAction } from "../features/borrow/borrowAction";
 
 const BookLanding = () => {
   const { _id } = useParams();
-
+  const location = useLocation();
   const { books } = useSelector((state) => state.bookInfo);
   const book = books.find((book) => book._id === _id);
+  const { user } = useSelector((state) => state.userInfo);
+  const dispatch = useDispatch();
 
   const handleBookBorrow = () => {
     if (window.confirm("Are you sure you want to borrow this book?")) {
-      dispatchEvent(
-        postNewBorrowAction({ bookId: book._id, bookTitle: book.title, thumbnail: book.thumbnail })
+      dispatch(
+        postNewBorrowAction({ bookId: book._id, bookTitle: book?.title, thumbnail: book.thumbnail })
       );
     }
   };
@@ -25,22 +27,22 @@ const BookLanding = () => {
     <DefaultLayout>
       <Row>
         <Col md={6}>
-          <img src={book.thumbnail} alt="book" style={{ maxWidth: "450px" }} />
+          <img src={book?.thumbnail} alt="book" style={{ maxWidth: "450px" }} />
         </Col>
         <Col md={6} className="col">
-          <h1>{book.title}</h1>
+          <h1>{book?.title}</h1>
           <p>
-            {book.author} - {book.publishedYear}
+            {book?.author} - {book?.publishedYear}
           </p>
           <Stars stars={3.5} />
-          <p>{book.description.slice(0, 50)}...</p>
+          <p>{book?.description.slice(0, 50)}...</p>
           {user?._id ? (
             <Button variant="warning" onClick={handleBookBorrow}>
               Borrow Book Now
             </Button>
           ) : (
-            <Link>
-              (<Button variant="warning">Login to borrow</Button>
+            <Link to="/signin" state={{ from: { location } }}>
+              <Button variant="warning">Login to borrow</Button>
             </Link>
           )}
         </Col>

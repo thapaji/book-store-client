@@ -1,6 +1,7 @@
 import { toast } from "react-toastify";
 import { fetchUserInfo, loginUser } from "./userAxios";
 import { setUser } from "./userSlice";
+import { renewAccessJWT } from "../../helpers/axiosHelper";
 
 export const getUserObj = () => async (dispatch) => {
     const { status, user } = await fetchUserInfo();
@@ -21,4 +22,19 @@ export const login = async (dispatch, login) => {
         dispatch(getUserObj());
     }
     return status;
+}
+
+export const autoLogin = () => async (dispatch) => {
+    const accessJWT = sessionStorage.getItem("accessJWT");
+    const refreshJWT = localStorage.getItem("refreshJWT");
+    /********** When access JWt Exists ************/
+    if (accessJWT) {
+        dispatch(getUserObj());
+        return;
+    }
+    /********** When accessJWT do not exist but refreshJWt Exists ************/
+    if (refreshJWT) {
+        const token = await renewAccessJWT();
+        token && dispatch(getUserObj())
+    }
 }

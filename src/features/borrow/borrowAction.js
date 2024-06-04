@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { postNewBorrow, fetchBorrows, fetchSingleBorrow, updateBorrow } from "./BorrowAxios"
+import { postNewBorrow, fetchBorrows, fetchSingleBorrow, updateBorrow } from "./borrowAxios"
 import { setBorrows, setSelectedBorrow } from "./borrowSlice";
 
 export const postNewBorrowAction = (Borrow) => async (dispatch) => {

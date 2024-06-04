@@ -14,12 +14,14 @@ import EditBook from "./pages/book/EditBook";
 import { useDispatch } from "react-redux";
 import { getAllBooksAction } from "./features/books/bookAction";
 import BookLanding from "./pages/BookLanding";
+import { autoLogin } from "./features/users/userAction";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllBooksAction());
+    dispatch(autoLogin());
   }, [dispatch]);
 
   return (

@@ -6,18 +6,21 @@ import { toast } from "react-toastify";
 import { loginUser } from "../../features/users/userAxios";
 import { getUserObj, login } from "../../features/users/userAction";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const dispatch = useDispatch();
   const emailRef = useRef("");
   const passwordRef = useRef("");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { user } = useSelector((state) => state.userInfo);
+  const sendTo = location?.state?.from?.location?.pathname || "/";
 
   useEffect(() => {
-    user?._id && navigate("/dashboard");
+    user?._id && navigate(sendTo);
+    // user?._id && navigate("/dashboard");
   }, [user?._id, navigate]);
 
   const handleSubmit = async (e) => {
