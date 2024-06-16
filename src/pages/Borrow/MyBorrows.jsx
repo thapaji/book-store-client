@@ -9,9 +9,7 @@ const MyBorrows = () => {
   useEffect(() => {
     dispatch(getAllBorrowsAction());
   }, [dispatch]);
-  return <UserLayout>
-    
-  </UserLayout>;
+  return <UserLayout pageTitle={"Borrow History"} />;
 };
 
 export default MyBorrows;

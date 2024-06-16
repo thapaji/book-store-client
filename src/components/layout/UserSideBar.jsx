@@ -1,44 +1,55 @@
 import React from "react";
 import { Stack } from "react-bootstrap";
+import { CgProfile } from "react-icons/cg";
+import { FaListUl } from "react-icons/fa";
+import { FaBookBookmark, FaUsers } from "react-icons/fa6";
+import { IoLibrary } from "react-icons/io5";
+import { TbStarsFilled } from "react-icons/tb";
 import { Link } from "react-router-dom";
 
 const sideLinks = [
   {
+    icon: <FaBookBookmark />,
     title: "Books",
     to: "/admin/books",
+    isAdminOnly: true,
   },
   {
+    icon: <FaUsers />,
     title: "Students",
     to: "/admin/students",
+    isAdminOnly: true,
   },
   {
-    title: "All Borrows",
-    to: "/admin/borrows",
+    icon: <FaListUl />,
+    title: "Borrows History",
+    to: "/borrows",
+    isAdminOnly: true,
   },
   {
+    icon: <TbStarsFilled />,
+    title: "All Reviews",
+    to: "/admin/reviews",
+    isAdminOnly: true,
+  },
+  {
+    icon: <IoLibrary />,
     title: "My Books",
-    to: "/admin/my-books",
+    to: "/my-books",
   },
   {
-    title: "Books List",
-    to: "/admin/books/list",
-  },
-  {
+    icon: <CgProfile />,
     title: "Profile",
-    to: "/admin/profile",
-  },
-  {
-    title: "Admins",
-    to: "/admin/admins",
+    to: "/profile",
   },
 ];
 
 export const UserSideBar = () => {
   return (
-    <Stack direction="vertical" gap={1}>
-      {sideLinks.map(({ title, to }) => (
-        <Link to={to} className="p-1 nav-link">
-          {title}
+    <Stack gap={1}>
+      {sideLinks.map(({ title, to, icon }) => (
+        <Link key={title} to={to} className="nav-link mb-2">
+          {icon} <label htmlFor={title}>{title}</label>
         </Link>
       ))}
     </Stack>

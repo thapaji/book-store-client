@@ -15,15 +15,17 @@ export const UserLayout = ({ children, pageTitle }) => {
         <Header />
         <Container fluid>
           <Row>
-            <Col xs={2} className="shadow-lg p-4">
+            <Col sm={2} className="shadow-lg p-4">
               <div>
                 Welcome <h3>{user.fname + " " + user.lname}</h3>
               </div>
-
-              <UserSideBar />
+              <hr />
+              <div className="mt-3">
+                <UserSideBar />
+              </div>
             </Col>
-            <Col>
-              <div className="p-2">{pageTitle}</div>
+            <Col className="p-5">
+              <h3 className="">{pageTitle}</h3>
               <hr />
               <main className="main mb-3">{children}</main>
             </Col>
