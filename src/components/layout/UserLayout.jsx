@@ -15,9 +15,9 @@ export const UserLayout = ({ children, pageTitle }) => {
         <Header />
         <Container fluid>
           <Row>
-            <Col xs={3} className="bg-dark text-light">
-              <div className="p-3">
-                Welcome Back <h3>{user.fname}</h3>
+            <Col xs={2} className="shadow-lg p-4">
+              <div>
+                Welcome <h3>{user.fname + " " + user.lname}</h3>
               </div>
 
               <UserSideBar />

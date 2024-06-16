@@ -5,5 +5,6 @@ import { Navigate, useLocation } from "react-router-dom";
 export const AuthRoute = ({ children }) => {
   const location = useLocation();
   const { user } = useSelector((state) => state.userInfo);
-  return user?._id ? children : <Navigate to="/" state={{}} />;
+  console.log(user)
+  return user?._id ? children : <Navigate to="/"  />;
 };
