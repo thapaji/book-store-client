@@ -61,10 +61,10 @@ const SignUp = () => {
         <Col>
           <Form
             onSubmit={handleSubmit}
-            className="shadow-lg border border-secondary p-5 rounded m-auto mt-4"
+            className="shadow-lg border border-secondary p-5 rounded m-auto mt-2 bg-info"
             style={{ width: "450px" }}
           >
-            <h1>Join the Book Store Community!!!!!</h1>
+            <h2>Become our Member</h2>
             <hr />
             {inputs.map((input, i) => (
               <CustomInput key={i} {...input} onChange={handleChange} />

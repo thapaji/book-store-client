@@ -7,6 +7,7 @@ export const inputs = [
         required: true,
     },
     { label: "Isbn", type: "text", name: "isbn", placeholder: "Add ISBN number", required: true },
+    { label: "Category", type: "text", name: "category", placeholder: "Add Category", required: true },
     {
         label: "PUBLISHED YEAR",
         type: "text",

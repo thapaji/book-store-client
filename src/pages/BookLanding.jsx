@@ -24,7 +24,7 @@ const BookLanding = () => {
   };
 
   return (
-    <DefaultLayout>
+    <DefaultLayout pageTitle={"home"}>
       <Row>
         <Col md={6}>
           <img src={book?.thumbnail} alt="book" style={{ maxWidth: "450px" }} />

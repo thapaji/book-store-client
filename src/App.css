@@ -1,5 +1,12 @@
+.img-background {
+  background: url(https://images.unsplash.com/photo-1618365908648-e71bd5716cba?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+    no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
 .main {
-  min-height: 85vh;
+  min-height: 81vh;
 }
 
 .carousel {
@@ -20,4 +27,31 @@ a {
   transition: all 0.3 s;
 }
 
+.icon-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  text-decoration: none;
+  color: inherit;
+}
 
+.icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.icon-link:hover .icon {
+  transform: scale(2);
+}
+
+.link-label {
+  margin-left: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.icon-link:hover .link-label {
+  opacity: 1;
+  visibility: visible;
+}
