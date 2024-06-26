@@ -21,7 +21,7 @@ const AddNewBook = () => {
   return (
     <UserLayout pageTitle={"New Book"}>
       <div>
-        <Link to={"/admin/books/list"}>
+        <Link to={"/admin/books"}>
           <Button variant="secondary"> Back</Button>
         </Link>
       </div>

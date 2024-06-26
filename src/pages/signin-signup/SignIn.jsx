@@ -16,12 +16,12 @@ const SignIn = () => {
   const location = useLocation();
 
   const { user } = useSelector((state) => state.userInfo);
-  const sendTo = location?.state?.from?.location?.pathname || "/";
+  // const sendTo = location?.state?.from?.location?.pathname || "/";
 
   useEffect(() => {
-    user?._id && navigate(sendTo);
-    // user?._id && navigate("/dashboard");
-  }, [user?._id, navigate]);
+    // user?._id && navigate(sendTo);
+    user?._id && navigate("/dashboard");
+  }, [user, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -19,6 +19,8 @@ import { autoLogin } from "./features/users/userAction";
 import MyBorrows from "./pages/Borrow/MyBorrows";
 import Profile from "./pages/signin-signup/Profile";
 import Reviews from "./pages/review/Reviews";
+import Categories from "./pages/filters/Categories";
+import Authors from "./pages/filters/Authors";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +49,8 @@ function App() {
         <Route path="/borrows" element={<MyBorrows />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/admin/reviews" element={<Reviews />} />
+        <Route path="/admin/categories" element={<Categories />} />
+        <Route path="/admin/authors" element={<Authors />} />
       </Routes>
       <ToastContainer />
     </>

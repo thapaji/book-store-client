@@ -1,9 +1,10 @@
 import React from "react";
 import { Stack } from "react-bootstrap";
 import { CgProfile } from "react-icons/cg";
-import { FaListUl } from "react-icons/fa";
+import { FaListUl, FaPenFancy } from "react-icons/fa";
 import { FaBookBookmark, FaUsers } from "react-icons/fa6";
 import { IoLibrary } from "react-icons/io5";
+import { MdCategory } from "react-icons/md";
 import { TbStarsFilled } from "react-icons/tb";
 import { Link } from "react-router-dom";
 
@@ -12,6 +13,18 @@ const sideLinks = [
     icon: <FaBookBookmark />,
     title: "Books",
     to: "/admin/books",
+    isAdminOnly: true,
+  },
+  {
+    icon: <FaPenFancy />,
+    title: "Authors",
+    to: "/admin/authors",
+    isAdminOnly: true,
+  },
+  {
+    icon: <MdCategory />,
+    title: "Categories",
+    to: "/admin/categories",
     isAdminOnly: true,
   },
   {
@@ -34,7 +47,7 @@ const sideLinks = [
   },
   {
     icon: <IoLibrary />,
-    title: "My Books",
+    title: "My Borrows",
     to: "/my-books",
   },
   {

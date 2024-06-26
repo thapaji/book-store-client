@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import bookImg from "../../assets/books.svg";
+import { RiSearchLine } from "react-icons/ri";
 
 const Home = () => {
   const { books } = useSelector((state) => state.bookInfo);
@@ -57,7 +58,11 @@ const Home = () => {
           </Col>
           <Col lg={3}>
             <div>
-              <Form.Control onChange={handleSearch} placeholder="search by book name .." />
+              <Form.Control
+                onChange={handleSearch}
+                placeholder="Search by book name .."
+                className="search-input"
+              />
             </div>
           </Col>
         </Row>
