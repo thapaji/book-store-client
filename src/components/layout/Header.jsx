@@ -33,6 +33,22 @@ export const Header = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ms-auto">
+          <Link className="nav-link icon-link" to="/">
+            <FaHouse className="icon" />
+            <span className="link-label">Home</span>
+          </Link>
+          <Link className="nav-link icon-link" to="/categories">
+            <FaRegListAlt className="icon" />
+            <span className="link-label">Categories</span>
+          </Link>
+          <Link className="nav-link icon-link" to="/services">
+            <FaTools className="icon" />
+            <span className="link-label">Services</span>
+          </Link>
+          <Link className="nav-link icon-link" to="/news">
+            <FaNewspaper className="icon" />
+            <span className="link-label">News</span>
+          </Link>
           {user?._id ? (
             <>
               <Link className="nav-link icon-link" to="/dashboard">
@@ -46,22 +62,6 @@ export const Header = () => {
             </>
           ) : (
             <>
-              <Link className="nav-link icon-link" to="/">
-                <FaHouse className="icon" />
-                <span className="link-label">Home</span>
-              </Link>
-              <Link className="nav-link icon-link" to="/categories">
-                <FaRegListAlt className="icon" />
-                <span className="link-label">Categories</span>
-              </Link>
-              <Link className="nav-link icon-link" to="/services">
-                <FaTools className="icon" />
-                <span className="link-label">Services</span>
-              </Link>
-              <Link className="nav-link icon-link" to="/news">
-                <FaNewspaper className="icon" />
-                <span className="link-label">News</span>
-              </Link>
               <Link className="nav-link icon-link" to="/signin">
                 <FaSignInAlt className="icon" />
                 <span className="link-label">Sign In</span>

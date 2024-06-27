@@ -7,9 +7,6 @@ import { Button } from "react-bootstrap";
 const BookList = () => {
   return (
     <UserLayout pageTitle={"Book List"}>
-      {/* <div className="text-end mb-5">
-        
-      </div> */}
       <BookTable />
     </UserLayout>
   );
