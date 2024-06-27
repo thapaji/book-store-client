@@ -27,7 +27,7 @@ export const Header = () => {
 
   return (
     <Navbar expand="md" variant="dark" className="bg-dark px-3">
-      <Link className="navbar-brand" to="/">
+      <Link className="navbar-brand fs-1" to="/">
         Book Store
       </Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -36,11 +36,11 @@ export const Header = () => {
           {user?._id ? (
             <>
               <Link className="nav-link icon-link" to="/dashboard">
-                <RxDashboard />
+                <RxDashboard className="icon" />
                 <span className="link-label icon-link">Dashboard</span>
               </Link>
               <Link className="nav-link icon-link" to="/" onClick={handleLogOut}>
-                <FaSignOutAlt />
+                <FaSignOutAlt className="icon" />
                 <span className="link-label">Sign Out</span>
               </Link>
             </>

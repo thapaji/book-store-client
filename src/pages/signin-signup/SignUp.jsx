@@ -4,6 +4,7 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import { CustomInput } from "../../components/customInput/CustomInput";
 import { toast } from "react-toastify";
 import { postNewUser } from "../../features/users/userAxios";
+import signup from "../../assets/signup.svg";
 
 const SignUp = () => {
   const [form, setForm] = useState({});
@@ -57,13 +58,9 @@ const SignUp = () => {
 
   return (
     <DefaultLayout>
-      <Row>
+      <Row className="mt-5">
         <Col>
-          <Form
-            onSubmit={handleSubmit}
-            className="shadow-lg border border-secondary p-5 rounded m-auto mt-2 bg-info"
-            style={{ width: "450px" }}
-          >
+          <Form onSubmit={handleSubmit} className="shadow-lg  p-5 rounded m-auto">
             <h2>Become our Member</h2>
             <hr />
             {inputs.map((input, i) => (
@@ -83,6 +80,9 @@ const SignUp = () => {
               </Button>
             </div>
           </Form>
+        </Col>
+        <Col className="d-flex justify-content-center align-items-center">
+          <img src={signup} alt="Sign Up" style={{ width: "100%" }} />
         </Col>
       </Row>
     </DefaultLayout>

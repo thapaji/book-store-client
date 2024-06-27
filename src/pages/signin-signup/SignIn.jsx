@@ -7,6 +7,7 @@ import { loginUser } from "../../features/users/userAxios";
 import { getUserObj, login } from "../../features/users/userAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import signin from "../../assets/signin.svg";
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -55,11 +56,14 @@ const SignIn = () => {
 
   return (
     <DefaultLayout>
-      <Row>
+      <Row className="mt-5">
+        <Col className="d-flex justify-content-center align-items-center">
+          <img src={signin} alt="Sign In" style={{ width: "100%" }} />
+        </Col>
         <Col>
           <Form
             onSubmit={handleSubmit}
-            className="shadow-lg border border-secondary p-5 rounded m-auto mt-4 bg-info"
+            className="shadow-lg p-5 rounded m-auto"
             style={{ width: "450px" }}
           >
             <h2>Sign in</h2>

@@ -1,6 +1,7 @@
 import { toast } from "react-toastify";
-import { postNewBook, fetchBooks, fetchSingleBook, updateBook } from "./bookAxios"
+import { postNewBook, fetchBooks, fetchSingleBook, updateBook, deleteBook } from "./bookAxios"
 import { setBooks, setSelectedBook } from "./bookSlice";
+import { useNavigate } from "react-router-dom";
 
 export const postNewBookAction = (book) => async (dispatch) => {
     const pending = postNewBook(book);
@@ -9,7 +10,9 @@ export const postNewBookAction = (book) => async (dispatch) => {
     })
     const { status, message } = await pending;
     toast[status](message);
-    console.log(message)
+    if (status) {
+        dispatch(getAllBooksAction(true));
+    }
 }
 
 export const getAllBooksAction = (isPrivate) => async (dispatch) => {
@@ -33,5 +36,19 @@ export const updateBookAction = (book) => async (dispatch) => {
     })
     const { status, message } = await pending;
     toast[status](message);
-    console.log(message)
+    if (status) {
+        dispatch(getAllBooksAction(true));
+    }
+}
+
+export const deleteBookAction = (_id) => async (dispatch) => {
+    const pending = deleteBook(_id);
+    toast.promise(pending, {
+        pending: "Deleting your Book....."
+    })
+    const { status, message } = await pending;
+    toast[status](message);
+    if (status) {
+        dispatch(getAllBooksAction(true));
+    }
 }

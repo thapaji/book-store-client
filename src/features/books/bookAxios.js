@@ -23,3 +23,8 @@ export const updateBook = async (book) => {
     const axiosObj = { method: 'PUT', url: bookEp, data: book, isPrivate: true };
     return await apiProcessor(axiosObj);
 };
+
+export const deleteBook = async (_id) => {
+    const axiosObj = { method: 'DELETE', url: bookEp + '/' + _id, isPrivate: true };
+    return await apiProcessor(axiosObj);
+};

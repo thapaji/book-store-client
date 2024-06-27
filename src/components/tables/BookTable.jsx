@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Row, Spinner, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllBooksAction, updateBookAction } from "../../features/books/bookAction";
+import {
+  deleteBookAction,
+  getAllBooksAction,
+  updateBookAction,
+} from "../../features/books/bookAction";
 import { Link, useNavigate } from "react-router-dom";
 import { FaChevronDown, FaPlus } from "react-icons/fa";
 import { AddStockModel } from "../../components/customModel/AddStockModel";
+import ConfirmModal from "../customModel/ConfirmModal";
 
 export const BookTable = () => {
   const dispatch = useDispatch();
@@ -12,7 +17,9 @@ export const BookTable = () => {
   const { books } = useSelector((state) => state.bookInfo);
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
   const [clickedBook, setClickedBook] = useState({});
+  const [bookIdToDelete, setBookIdToDelete] = useState("");
 
   useEffect(() => {
     dispatch(getAllBooksAction(isPrivate));
@@ -26,7 +33,16 @@ export const BookTable = () => {
   const handleModalShow = (book) => {
     setShow(true);
     setClickedBook(book);
-    console.log(book);
+  };
+
+  const handleDelete = (book) => {
+    setShowConfirm(true);
+    setBookIdToDelete(book._id);
+  };
+
+  const handleConfirmDelete = () => {
+    dispatch(deleteBookAction(bookIdToDelete));
+    setBookIdToDelete("");
   };
 
   return (
@@ -72,7 +88,7 @@ export const BookTable = () => {
                     <Form.Check
                       type="switch"
                       label={book.status === "active" ? "Active" : "Inactive"}
-                      onClick={() => handleToggle(book)}
+                      onChange={() => handleToggle(book)}
                       checked={book.status === "active"}
                       className={book.status === "active" ? "text-success" : "text-danger"}
                     />
@@ -105,7 +121,14 @@ export const BookTable = () => {
                         </Button>
                       </div>
                       <div className="d-grid">
-                        <Button variant="outline-danger">Delete</Button>
+                        <Button
+                          variant="outline-danger"
+                          onClick={() => {
+                            handleDelete(book);
+                          }}
+                        >
+                          Delete
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -116,6 +139,12 @@ export const BookTable = () => {
         </Table>
       </Row>
       <AddStockModel show={show} setShow={setShow} clickedBook={clickedBook} />
+      <ConfirmModal
+        show={showConfirm}
+        setShow={setShowConfirm}
+        onConfirm={handleConfirmDelete}
+        message="Are you sure you want to delete this book?"
+      />
     </>
   );
 };

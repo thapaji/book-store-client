@@ -5,7 +5,7 @@ import { Container } from "react-bootstrap";
 
 export const DefaultLayout = ({ children, pageTitle }) => {
   return (
-    <div className={pageTitle === "home" ? "" : "img-background "}>
+    <div>
       <Header />
       <Container>
         <main className="main">{children}</main>
