@@ -10,6 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaChevronDown, FaPlus } from "react-icons/fa";
 import { AddStockModel } from "../../components/customModel/AddStockModel";
 import ConfirmModal from "../customModel/ConfirmModal";
+import { handleBookSearch } from "../../helpers/handleSearch";
 
 export const BookTable = () => {
   const dispatch = useDispatch();
@@ -18,12 +19,19 @@ export const BookTable = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
+  const [searchedBooks, setSearchedBooks] = useState([]);
   const [clickedBook, setClickedBook] = useState({});
   const [bookIdToDelete, setBookIdToDelete] = useState("");
 
   useEffect(() => {
     dispatch(getAllBooksAction(isPrivate));
+    setSearchedBooks(books);
   }, [dispatch]);
+
+  const handleSearch = (e) => {
+    const { value } = e.target;
+    handleBookSearch(books, setSearchedBooks, value);
+  };
 
   const handleToggle = ({ __v, createdAt, updatedAt, ...rest }) => {
     rest.status = rest.status === "inactive" ? "active" : "inactive";
@@ -51,7 +59,12 @@ export const BookTable = () => {
         <Col>{books.length} books found</Col>
         <Col>
           {" "}
-          <input type="text" className="form-control" placeholder="Search" />
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Search by Book Name"
+            onChange={handleSearch}
+          />
         </Col>
         <Col className="text-end">
           <Link to="/admin/books/new">
@@ -73,7 +86,7 @@ export const BookTable = () => {
             </tr>
           </thead>
           <tbody>
-            {books.map((book, i) => (
+            {searchedBooks.map((book, i) => (
               <tr key={book._id}>
                 <td>{i + 1}</td>
                 <td>

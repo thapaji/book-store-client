@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { DefaultLayout } from "../../components/layout/DefaultLayout";
-import { CustomCarousel } from "../../components/customCarousel/CustomCarousel";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { CustomCard } from "../../components/customCard/CustomCard";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import bookImg from "../../assets/books.svg";
-import { RiSearchLine } from "react-icons/ri";
+import { handleBookSearch } from "../../helpers/handleSearch";
 
 const Home = () => {
   const { books } = useSelector((state) => state.bookInfo);
@@ -20,10 +19,7 @@ const Home = () => {
 
   const handleSearch = (e) => {
     const { value } = e.target;
-    // const arg = books.filter(({ title }) => title.toLowerCase().includes(value.toLowerCase()));
-    setSearchedBooks(
-      books.filter(({ title }) => title.toLowerCase().includes(value.toLowerCase()))
-    );
+    handleBookSearch(books, setSearchedBooks, value);
   };
 
   const handleButtonClick = () => {
@@ -68,7 +64,7 @@ const Home = () => {
         </Row>
         <hr />
         <Row>
-          <Col className="d-flex gap-2 flex-wrap">
+          <Col className="d-flex gap-2 flex-wrap justify-content-between">
             {searchedBooks.map((book) => (
               <Link key={book._id} to={"/book/" + book._id}>
                 <CustomCard key={book._id} {...book} />
