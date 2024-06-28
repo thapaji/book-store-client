@@ -16,6 +16,11 @@ export const postNewUser = async (userObj) => {
 };
 
 export const fetchUserInfo = async () => {
-    const axiosObj = { method: 'GET', url: userEp, isPrivate: true}
+    const axiosObj = { method: 'GET', url: userEp, isPrivate: true }
+    return await apiProcessor(axiosObj);
+};
+
+export const fetchUsers = async (role) => {
+    const axiosObj = { method: 'GET', url: userEp + '/' + role + 's', isPrivate: true }
     return await apiProcessor(axiosObj);
 };

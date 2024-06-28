@@ -22,3 +22,15 @@ export const handleAuthorSearch = (authors, setSearchedAuthors, value) => {
         )
     );
 };
+
+export const handleUserSearch = (users, setSearchedUsers, value) => {
+    setSearchedUsers(
+        users.filter(user =>
+            user.fname.toLowerCase().includes(value.toLowerCase()) ||
+            user.lname.toLowerCase().includes(value.toLowerCase()) ||
+            user.email.toLowerCase().includes(value.toLowerCase()) ||
+            user.phone.toLowerCase().includes(value.toLowerCase())
+        )
+    );
+};
+

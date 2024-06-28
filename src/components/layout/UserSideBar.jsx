@@ -1,7 +1,7 @@
 import React from "react";
 import { Stack } from "react-bootstrap";
 import { CgProfile } from "react-icons/cg";
-import { FaListUl, FaPenFancy } from "react-icons/fa";
+import { FaListUl, FaPenFancy, FaUserShield } from "react-icons/fa";
 import { FaBookBookmark, FaUsers } from "react-icons/fa6";
 import { IoLibrary } from "react-icons/io5";
 import { MdCategory } from "react-icons/md";
@@ -25,6 +25,12 @@ const sideLinks = [
     icon: <MdCategory />,
     title: "Categories",
     to: "/admin/categories",
+    isAdminOnly: true,
+  },
+  {
+    icon: <FaUserShield />,
+    title: "Admins",
+    to: "/admin/admins",
     isAdminOnly: true,
   },
   {

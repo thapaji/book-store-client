@@ -1,11 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { DefaultLayout } from "../components/layout/DefaultLayout";
+import { DefaultLayout } from "../../components/layout/DefaultLayout";
 import { Button, Col, Nav, Row, Tab, Tabs } from "react-bootstrap";
-import { ReviewBlock } from "../components/customCard/ReviewBlock";
-import { Stars } from "../components/stars/Stars";
-import { postNewBorrowAction } from "../features/borrow/borrowAction";
+import { ReviewBlock } from "../../components/customCard/ReviewBlock";
+import { Stars } from "../../components/stars/Stars";
+import { postNewBorrowAction } from "../../features/borrow/borrowAction";
 
 const BookLanding = () => {
   const { _id } = useParams();

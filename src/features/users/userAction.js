@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
-import { fetchUserInfo, loginUser } from "./userAxios";
-import { setUser } from "./userSlice";
+import { fetchUserInfo, fetchUsers, loginUser } from "./userAxios";
+import { setUser, setUsers } from "./userSlice";
 import { renewAccessJWT } from "../../helpers/axiosHelper";
 
 export const getUserObj = () => async (dispatch) => {
@@ -36,5 +36,12 @@ export const autoLogin = () => async (dispatch) => {
     if (refreshJWT) {
         const token = await renewAccessJWT();
         token && dispatch(getUserObj())
+    }
+}
+
+export const fetchUsersAction = (role) => async (dispatch) => {
+    const { status, users } = await fetchUsers(role);
+    if (status === "success") {
+        dispatch(setUsers(users));
     }
 }
