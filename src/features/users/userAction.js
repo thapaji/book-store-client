@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
-import { fetchUserInfo, fetchUsers, loginUser } from "./userAxios";
-import { setUser, setUsers } from "./userSlice";
+import { fetchSelectedUserInfo, fetchUserInfo, fetchUsers, loginUser } from "./userAxios";
+import { setSelectedUser, setUser, setUsers } from "./userSlice";
 import { renewAccessJWT } from "../../helpers/axiosHelper";
 
 export const getUserObj = () => async (dispatch) => {
@@ -11,17 +11,32 @@ export const getUserObj = () => async (dispatch) => {
     dispatch(setUser(user))
 }
 
+export const getSelectedUserObj = (_id) => async (dispatch) => {
+    const { status, user } = await fetchSelectedUserInfo(_id);
+
+    dispatch(setSelectedUser(user))
+}
+
 export const login = async (dispatch, login) => {
     const pending = loginUser(login);
     toast.promise(pending, { pending: 'Please Wait...' })
     const { status, message, tokens } = await pending;
     toast[status](message);
-    sessionStorage.setItem("accessJWT", tokens.accessJWT);
-    localStorage.setItem("refreshJWT", tokens.refreshJWT);
-    if (status === "success") {
-        dispatch(getUserObj());
+    toast.info('Setting up your environmenet. please wait...', { autoClose: false })
+    try {
+        sessionStorage.setItem("accessJWT", tokens.accessJWT);
+        localStorage.setItem("refreshJWT", tokens.refreshJWT);
+        if (status === "success") {
+            dispatch(getUserObj());
+        }
+
+    } catch (error) {
+        toast.error('Something went wrong please contact administrator.')
+    } finally {
+        toast.dismiss();
     }
-    return status;
+
+    return
 }
 
 export const autoLogin = () => async (dispatch) => {

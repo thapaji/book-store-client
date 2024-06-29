@@ -28,7 +28,6 @@ const SignIn = () => {
     e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-    // console.log(email, password);
     if (!email || !password) {
       return toast.error("Please fill all fields");
     }

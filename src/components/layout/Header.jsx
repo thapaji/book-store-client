@@ -2,6 +2,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import {
+  FaBookReader,
   FaNewspaper,
   FaRegListAlt,
   FaSignInAlt,
@@ -28,6 +29,7 @@ export const Header = () => {
   return (
     <Navbar expand="md" variant="dark" className="bg-dark px-3">
       <Link className="navbar-brand fs-1" to="/">
+        <FaBookReader />
         Book Store
       </Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />

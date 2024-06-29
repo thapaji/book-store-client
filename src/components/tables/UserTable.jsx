@@ -35,7 +35,7 @@ export const UserTable = ({ role = "student" }) => {
 
   const handleModalShow = (user) => {
     setShow(true);
-    setClickedUseruser(user);
+    setClickedUser(user);
   };
 
   const handleDelete = (user) => {

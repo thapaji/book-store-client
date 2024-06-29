@@ -22,6 +22,8 @@ import Reviews from "./pages/review/Reviews";
 import Categories from "./pages/filters/Categories";
 import Authors from "./pages/filters/Authors";
 import Admins from "./pages/users/Admins";
+import AddUser from "./pages/users/AddUser";
+import EditUser from "./pages/users/EditUser";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +49,8 @@ function App() {
         <Route path="/admin/book/edit/:_id" element={<EditBook />} />
         <Route path="/admin/admins" element={<Admins />} />
         <Route path="/admin/students" element={<Students />} />
+        <Route path="/admin/users/new" element={<AddUser />} />
+        <Route path="/admin/user/edit/:_id" element={<EditUser />} />
         <Route path="/my-books" element={<MyBook />} />
         <Route path="/borrows" element={<MyBorrows />} />
         <Route path="/profile" element={<Profile />} />

@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { setSelectedBook } from "../books/bookSlice";
 
 const userSlice = createSlice({
     name: 'user',
     initialState: {
-        user: {}, users: []
+        user: {}, users: [], selectedUser: {}
     },
     reducers: {
         setUser: (state, action) => {
@@ -12,11 +13,14 @@ const userSlice = createSlice({
         setUsers: (state, { payload }) => {
             state.users = payload || [];
         },
+        setSelectedUser: (state, action) => {
+            state.selectedUser = action.payload || {};
+        }
     }
 })
 
 const { reducer, actions } = userSlice;
 
-export const { setUser, setUsers } = actions;
+export const { setUser, setUsers, setSelectedUser } = actions;
 
 export default reducer;
