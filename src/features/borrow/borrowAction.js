@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { postNewBorrow, fetchBorrows, fetchSingleBorrow } from "./borrowAxios"
+import { postNewBorrow, fetchBorrows, fetchSingleBorrow, returnBook } from "./borrowAxios"
 import { setBorrows, setSelectedBorrow } from "./borrowSlice";
 import { getAllBooksAction, getSingleBookAction } from "../books/bookAction";
 
@@ -35,7 +35,7 @@ export const getSingleBorrowAction = (_id) => async (dispatch) => {
 }
 
 export const returnBorrowAction = (Borrow) => async (dispatch) => {
-    const pending = updateBorrow(Borrow);
+    const pending = returnBook(Borrow);
     toast.promise(pending, {
         pending: "Updating your Borrow....."
     })

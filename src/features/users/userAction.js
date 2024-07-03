@@ -22,7 +22,7 @@ export const login = async (dispatch, login) => {
     toast.promise(pending, { pending: 'Please Wait...' })
     const { status, message, tokens } = await pending;
     toast[status](message);
-    toast.info('Setting up your environmenet. please wait...', { autoClose: false })
+    toast.info('Setting up your environmenet. please wait...')
     try {
         sessionStorage.setItem("accessJWT", tokens.accessJWT);
         localStorage.setItem("refreshJWT", tokens.refreshJWT);
@@ -32,8 +32,6 @@ export const login = async (dispatch, login) => {
 
     } catch (error) {
         toast.error('Something went wrong please contact administrator.')
-    } finally {
-        toast.dismiss();
     }
 
     return
