@@ -6,21 +6,12 @@
   min-height: 61vh;
 }
 
-.carousel {
-  height: 50vh;
-}
-
-.carousel img {
-  height: 50vh;
-  object-fit: cover;
-}
-
 a {
   text-decoration: none !important;
 }
 
 .card:hover {
-  transform: scale(1.1);
+  transform: scale(1.02);
   transition: all 0.3 s;
 }
 

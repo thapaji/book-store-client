@@ -13,7 +13,7 @@ const MyBorrows = () => {
   }, [dispatch]);
 
   return (
-    <UserLayout pageTitle={"Borrow History"}>
+    <UserLayout pageTitle={"All Borrows"}>
       <BorrowTable borrows={borrows} />
     </UserLayout>
   );

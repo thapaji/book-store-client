@@ -9,6 +9,11 @@ export const postNewBorrow = async (borrow) => {
     return await apiProcessor(axiosObj);
 };
 
+export const fetchAllBorrows = async (isPrivate) => {
+    const axiosObj = { method: 'GET', url: borrowEp + '/all', isPrivate: true };
+    return await apiProcessor(axiosObj);
+};
+
 export const fetchBorrows = async (isPrivate) => {
     const axiosObj = { method: 'GET', url: borrowEp, isPrivate: true };
     return await apiProcessor(axiosObj);

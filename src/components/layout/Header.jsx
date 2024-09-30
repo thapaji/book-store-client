@@ -10,7 +10,7 @@ import {
   FaTools,
   FaUserPlus,
 } from "react-icons/fa";
-import { FaArrowRight, FaHouse, FaUser } from "react-icons/fa6";
+import { FaArrowRight, FaHouse, FaUser, FaPhone } from "react-icons/fa6"; // Added FaPhone for contact
 import { RxDashboard } from "react-icons/rx";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -51,11 +51,15 @@ export const Header = () => {
             <FaNewspaper className="icon" />
             <span className="link-label">News</span>
           </Link>
+          <Link className="nav-link icon-link" to="/contact">
+            <FaPhone className="icon" />
+            <span className="link-label">Contact Us</span>
+          </Link>
           {user?._id ? (
             <>
               <Link className="nav-link icon-link" to="/dashboard">
                 <RxDashboard className="icon" />
-                <span className="link-label icon-link">Dashboard</span>
+                <span className="link-label">Dashboard</span>
               </Link>
               <Link className="nav-link icon-link" to="/" onClick={handleLogOut}>
                 <FaSignOutAlt className="icon" />

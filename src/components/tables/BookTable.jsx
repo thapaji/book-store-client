@@ -90,22 +90,27 @@ export const BookTable = () => {
               <tr key={book._id}>
                 <td>{i + 1}</td>
                 <td>
-                  <img src={book.thumbnail} alt="book" width="70px" />
+                  <Link to={"/book/" + book._id}>
+                    {" "}
+                    <img src={book.thumbnail} alt="book" width="70px" />
+                  </Link>
                 </td>
                 <td>
-                  <h2>{book.title}</h2>
-                  <div>{book.author}</div>
-                  <div>{book.publishedYear}</div>
-                  <div>
-                    Status:
-                    <Form.Check
-                      type="switch"
-                      label={book.status === "active" ? "Active" : "Inactive"}
-                      onChange={() => handleToggle(book)}
-                      checked={book.status === "active"}
-                      className={book.status === "active" ? "text-success" : "text-danger"}
-                    />
-                  </div>
+                  <Link to={"/book/" + book._id}>
+                    <h2>{book.title}</h2>
+                    <div style={{ color: "black" }}>{book.author}</div>
+                    <div style={{ color: "black" }}>{book.publishedYear}</div>
+                    <div style={{ color: "black" }}>
+                      Status:
+                      <Form.Check
+                        type="switch"
+                        label={book.status === "active" ? "Active" : "Inactive"}
+                        onChange={() => handleToggle(book)}
+                        checked={book.status === "active"}
+                        className={book.status === "active" ? "text-success" : "text-danger"}
+                      />
+                    </div>
+                  </Link>
                 </td>
                 <td>
                   <div className="hover-container">

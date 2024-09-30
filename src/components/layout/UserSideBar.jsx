@@ -1,15 +1,22 @@
 import React from "react";
 import { Stack } from "react-bootstrap";
 import { CgProfile } from "react-icons/cg";
-import { FaListUl, FaPenFancy, FaUserShield } from "react-icons/fa";
+import { FaEnvelope, FaListUl, FaNewspaper, FaPenFancy, FaUserShield } from "react-icons/fa";
 import { FaBookBookmark, FaUsers } from "react-icons/fa6";
 import { IoLibrary } from "react-icons/io5";
 import { MdCategory } from "react-icons/md";
+import { RxDashboard } from "react-icons/rx";
 import { TbStarsFilled } from "react-icons/tb";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const sideLinks = [
+  {
+    icon: <RxDashboard />,
+    title: "Dashboard",
+    to: "/dashboard",
+    isPublic: true,
+  },
   {
     icon: <FaBookBookmark />,
     title: "Books",
@@ -42,7 +49,7 @@ const sideLinks = [
   },
   {
     icon: <FaListUl />,
-    title: "Borrows History",
+    title: "All Borrows",
     to: "/borrows",
     isPublic: false,
   },
@@ -57,6 +64,18 @@ const sideLinks = [
     title: "My Borrows",
     to: "/my-books",
     isPublic: true,
+  },
+  {
+    icon: <FaNewspaper />,
+    title: "News",
+    to: "/admin/news",
+    isPublic: false,
+  },
+  {
+    icon: <FaEnvelope />,
+    title: "Messages",
+    to: "/admin/messages",
+    isPublic: false,
   },
   {
     icon: <CgProfile />,
