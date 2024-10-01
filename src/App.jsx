@@ -36,6 +36,9 @@ import BuyBooks from "./pages/services/BuyBooks";
 import OrderBooks from "./pages/services/OrderBooks";
 import BookDonations from "./pages/services/BookDonations";
 import EBookDownloads from "./pages/services/EBookDownloads";
+import ContactUs from "./pages/contact/ContactUs";
+import NewsPage from "./pages/news/NewsPage";
+import NewsDetailPage from "./pages/news/NewsDetailsPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -65,6 +68,9 @@ function App() {
         <Route path="/services/buy" element={<BuyBooks />} />
         <Route path="/services/order" element={<OrderBooks />} />
         <Route path="/services/donations" element={<BookDonations />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/news" element={<NewsPage />} />
+        <Route path="/news/:id" element={<NewsDetailPage />} />
 
         {/***************     Private Pages        ******************/}
         <Route path="/dashboard" element={<Dashboard />} />
