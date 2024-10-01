@@ -24,6 +24,8 @@ import Authors from "./pages/filters/Authors";
 import Admins from "./pages/users/Admins";
 import AddUser from "./pages/users/AddUser";
 import EditUser from "./pages/users/EditUser";
+import CategoriesPage from "./pages/category/CategoriesPage";
+import CategoryDetailPage from "./pages/category/CategoryDetailPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,6 +43,8 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/book/:_id" element={<BookLanding />} />
+        <Route path="/categories" element={<CategoriesPage />} />
+        <Route path="/categories/:category" element={<CategoryDetailPage />} />
 
         {/***************     Private Pages        ******************/}
         <Route path="/dashboard" element={<Dashboard />} />

@@ -10,7 +10,7 @@ export const CustomCard = ({ _id, thumbnail, title, author, publishedYear }) => 
         <Card.Text>
           {author?.length > 25 ? author.substring(0, 24) : author} - {publishedYear}
         </Card.Text>
-        <Button variant="primary">Read More...</Button>
+        <Button variant="warning">Read More...</Button>
       </Card.Body>
     </Card>
   );

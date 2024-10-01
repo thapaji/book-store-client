@@ -10,6 +10,7 @@ import { handleBookSearch } from "../../helpers/handleSearch";
 
 const Home = () => {
   const { books } = useSelector((state) => state.bookInfo);
+  const { user } = useSelector((state) => state.userInfo);
   const [searchedBooks, setSearchedBooks] = useState([]);
   const navigate = useNavigate();
 
@@ -22,32 +23,41 @@ const Home = () => {
     handleBookSearch(books, setSearchedBooks, value);
   };
 
-  const handleButtonClick = () => {
+  const handleSignUpClick = () => {
     navigate("/signup");
   };
 
+  const handleSignInClick = () => {
+    navigate("/signin");
+  };
+
   return (
-    <DefaultLayout pageTitle={"home"}>
-      {/* <CustomCarousel /> */}
-      {/******************* book list **************/}
+    <DefaultLayout>
       <Container className="mt-5">
-        <Row className="pt-5 mb-5">
-          <Col>
-            <h2 className="mt-5">Read, Explore, Connect</h2>
-            <p className="mt-5">
-              We are more than just a place to check out books. We're vibrant community hub
-              dedicated to enriching your life through knowledge, culture and connection. We inspire
-              lifelong learning, foster creativity, and empower our community through free access to
-              information and innovative library services.
-            </p>
-            <div className="d-grid mt-5 pt-5">
-              <Button onClick={handleButtonClick}>Join The community Now !!!</Button>
-            </div>
-          </Col>
-          <Col>
-            <img src={bookImg} alt="book_img" />
-          </Col>
-        </Row>
+        {!user?._id && (
+          <Row className="pt-5 mb-5">
+            <Col>
+              <h2 className="mt-5">Read, Explore, Connect</h2>
+              <p className="mt-5">
+                We are more than just a place to check out books. We're a vibrant community hub
+                dedicated to enriching your life through knowledge, culture, and connection. We
+                inspire lifelong learning, foster creativity, and empower our community through free
+                access to information and innovative library services.
+              </p>
+              <div className="d-grid mt-5 pt-5">
+                <Button onClick={handleSignUpClick} className="mb-3">
+                  Join The Community Now !!!
+                </Button>
+                <Button variant="link" onClick={handleSignInClick}>
+                  Already a member? Sign in
+                </Button>
+              </div>
+            </Col>
+            <Col>
+              <img src={bookImg} alt="book_img" />
+            </Col>
+          </Row>
+        )}
         <Row>
           <Col>
             <label htmlFor="">{searchedBooks.length} books found!!</label>

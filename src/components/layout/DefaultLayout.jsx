@@ -8,6 +8,14 @@ export const DefaultLayout = ({ children, pageTitle }) => {
     <div>
       <Header />
       <Container>
+        {pageTitle && (
+          <>
+            {" "}
+            <h1 className="mt-4">{pageTitle}</h1>
+            <hr />
+          </>
+        )}
+
         <main className="main">{children}</main>
       </Container>
       <Footer />
