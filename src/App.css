@@ -2,6 +2,10 @@
   min-height: 76vh;
 }
 
+.container-fluid {
+  padding: 0 !important;
+}
+
 .user-main {
   min-height: 61vh;
 }
@@ -57,4 +61,41 @@ a {
 
 .hover-container:hover .hover-content {
   display: block;
+}
+
+.service-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.service-description {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.link-highlight {
+  color: #ff6347;
+  text-decoration: underline;
+}
+
+.link-highlight:hover {
+  color: #ff4500;
+}
+
+h2 {
+  color: #333;
+  margin-top: 30px;
+}
+
+
+.genres-list, .recommendations-list {
+  margin-bottom: 2rem;
+  padding-left: 20px;
+}
+
+.link-highlight {
+  color: #007bff;
+  font-weight: bold;
 }

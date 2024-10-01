@@ -45,7 +45,7 @@ const Home = () => {
                 access to information and innovative library services.
               </p>
               <div className="d-grid mt-5 pt-5">
-                <Button onClick={handleSignUpClick} className="mb-3">
+                <Button onClick={handleSignUpClick} className="mb-3 btn-warning">
                   Join The Community Now !!!
                 </Button>
                 <Button variant="link" onClick={handleSignInClick}>

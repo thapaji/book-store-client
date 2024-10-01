@@ -28,7 +28,7 @@ export const Header = () => {
 
   return (
     <Navbar expand="md" variant="dark" className="bg-dark px-3">
-      <Link className="navbar-brand fs-1" to="/">
+      <Link className="navbar-brand fs-1 text-warning" to="/">
         <FaBookReader />
         Book Store
       </Link>

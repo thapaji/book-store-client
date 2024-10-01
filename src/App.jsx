@@ -26,6 +26,16 @@ import AddUser from "./pages/users/AddUser";
 import EditUser from "./pages/users/EditUser";
 import CategoriesPage from "./pages/category/CategoriesPage";
 import CategoryDetailPage from "./pages/category/CategoryDetailPage";
+import ServicesPage from "./pages/services/ServicesPage";
+import BookRentals from "./pages/services/BookRentals";
+import BookRecommendations from "./pages/services/BookRecommendations";
+import MembershipOptions from "./pages/services/MembershipOptions";
+import Events from "./pages/services/Events";
+import CustomerSupport from "./pages/services/CustomerSupport";
+import BuyBooks from "./pages/services/BuyBooks";
+import OrderBooks from "./pages/services/OrderBooks";
+import BookDonations from "./pages/services/BookDonations";
+import EBookDownloads from "./pages/services/EBookDownloads";
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +55,16 @@ function App() {
         <Route path="/book/:_id" element={<BookLanding />} />
         <Route path="/categories" element={<CategoriesPage />} />
         <Route path="/categories/:category" element={<CategoryDetailPage />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/services/rentals" element={<BookRentals />} />
+        <Route path="/services/ebooks" element={<EBookDownloads />} />
+        <Route path="/services/recommendations" element={<BookRecommendations />} />
+        <Route path="/services/membership" element={<MembershipOptions />} />
+        <Route path="/services/events" element={<Events />} />
+        <Route path="/services/support" element={<CustomerSupport />} />
+        <Route path="/services/buy" element={<BuyBooks />} />
+        <Route path="/services/order" element={<OrderBooks />} />
+        <Route path="/services/donations" element={<BookDonations />} />
 
         {/***************     Private Pages        ******************/}
         <Route path="/dashboard" element={<Dashboard />} />

@@ -7,11 +7,11 @@ export const DefaultLayout = ({ children, pageTitle }) => {
   return (
     <div>
       <Header />
-      <Container>
+      <Container fluid>
         {pageTitle && (
           <>
             {" "}
-            <h1 className="mt-4">{pageTitle}</h1>
+            <h1 className="text-center mt-4">{pageTitle}</h1>
             <hr />
           </>
         )}
