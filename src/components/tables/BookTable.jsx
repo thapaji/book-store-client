@@ -25,8 +25,11 @@ export const BookTable = () => {
 
   useEffect(() => {
     dispatch(getAllBooksAction(isPrivate));
+  }, [dispatch, isPrivate]);
+
+  useEffect(() => {
     setSearchedBooks(books);
-  }, [dispatch]);
+  }, [books]);
 
   const handleSearch = (e) => {
     const { value } = e.target;

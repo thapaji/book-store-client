@@ -1,4 +1,3 @@
-import axios from "axios";
 import { apiProcessor } from "../../helpers/axiosHelper";
 
 const rootAPI = import.meta.env.VITE_APP_ROOTAPI;

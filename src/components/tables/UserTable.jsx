@@ -20,8 +20,11 @@ export const UserTable = ({ role = "student" }) => {
 
   useEffect(() => {
     dispatch(fetchUsersAction(role));
+  }, [dispatch, role]);
+
+  useEffect(() => {
     setSearchedUsers(users);
-  }, [dispatch, role, users.length]);
+  }, [users]);
 
   const handleSearch = (e) => {
     const { value } = e.target;
