@@ -1,13 +1,12 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import { DefaultLayout } from "../../components/layout/DefaultLayout";
 
 const NewsLanding = () => {
-  const { _id } = useParams();
+  const { id } = useParams();
   const { news } = useSelector((state) => state.newsInfo);
-  const article = news.find((item) => item._id === _id);
+  const article = news.find((item) => item._id === id);
 
   return (
     <DefaultLayout pageTitle={article?.title}>
@@ -17,9 +16,12 @@ const NewsLanding = () => {
             <img src={article?.imageUrl} alt={article?.title} width="100%" />
           </Col>
           <Col md={6}>
-            <h1>{article?.title}</h1>
-            <p>{article?.description}</p>
-            <div>{article?.content}</div>
+            <Row>
+              <Col>{article.authorName}</Col>
+              <Col>{article.createdAt.slice(0, 10)}</Col>
+            </Row>
+
+            <div dangerouslySetInnerHTML={{ __html: article?.content }}></div>
           </Col>
         </Row>
       </Container>

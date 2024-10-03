@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Col, Row, Spinner, Table } from "react-bootstrap";
+import { Button, Col, Row, Table } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { FaChevronDown, FaPlus } from "react-icons/fa";
 import ConfirmModal from "../../components/customModel/ConfirmModal";
 import { getAllNewsAction, deleteNewsAction } from "../../features/news/newsAction";
-// import { handleNewsSearch } from "../../helpers/handleSearch";
+import { handleNewsSearch } from "../../helpers/handleSearch";
 
 const NewsTable = () => {
   const dispatch = useDispatch();
@@ -16,18 +16,17 @@ const NewsTable = () => {
   const [newsIdToDelete, setNewsIdToDelete] = useState("");
 
   useEffect(() => {
-    dispatch(getAllNewsAction(true));
-  }, [dispatch]);
+    news.length < 1 && dispatch(getAllNewsAction(true));
+  }, [dispatch, news.length]);
 
   useEffect(() => {
     setSearchedNews(news);
   }, [news]);
 
   const handleSearch = (e) => {
-    // handleNewsSearch(news, setSearchedNews, e.target.value);
+    const value = e.target.value;
+    handleNewsSearch(news, setSearchedNews, value);
   };
-
-  console.log(searchedNews);
 
   const handleDelete = (news) => {
     setShowConfirm(true);
@@ -47,7 +46,7 @@ const NewsTable = () => {
           <input
             type="text"
             className="form-control"
-            placeholder="Search by Title"
+            placeholder="Search by Title/Author"
             onChange={handleSearch}
           />
         </Col>
@@ -78,8 +77,10 @@ const NewsTable = () => {
                 <img src={item.imageUrl} alt={item.title} width="70px" />
               </td>
               <td>
-                <h1>{item.title}</h1>
-                <p>{item.description.slice(0, 100) + "..."}</p>
+                <Link to={"/news/" + item._id}>
+                  <h1>{item.title}</h1>
+                  <p className="text-dark">{item.description.slice(0, 100) + "..."}</p>
+                </Link>
               </td>
               <td>{item.authorName}</td>
               <td>

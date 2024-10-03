@@ -1,6 +1,5 @@
-import { Button } from "react-bootstrap";
-import { useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
 import SignIn from "./pages/signin-signup/SignIn";
@@ -38,10 +37,10 @@ import BookDonations from "./pages/services/BookDonations";
 import EBookDownloads from "./pages/services/EBookDownloads";
 import ContactUs from "./pages/contact/ContactUs";
 import NewsPage from "./pages/news/NewsPage";
-import NewsDetailPage from "./pages/news/NewsDetailsPage";
 import NewsList from "./pages/news/NewsList";
 import AddNews from "./pages/news/AddNews";
 import EditNews from "./pages/news/EditNews";
+import NewsLanding from "./pages/news/NewsLanding";
 
 function App() {
   const dispatch = useDispatch();
@@ -73,7 +72,7 @@ function App() {
         <Route path="/services/donations" element={<BookDonations />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/news" element={<NewsPage />} />
-        <Route path="/news/:id" element={<NewsDetailPage />} />
+        <Route path="/news/:id" element={<NewsLanding />} />
 
         {/***************     Private Pages        ******************/}
         <Route path="/dashboard" element={<Dashboard />} />

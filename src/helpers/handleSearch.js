@@ -1,5 +1,3 @@
-import { useSelector } from "react-redux";
-
 export const handleBookSearch = (books, setSearchedBooks, value) => {
     setSearchedBooks(
         books.filter(({ title }) => title.toLowerCase().includes(value.toLowerCase()))
@@ -30,6 +28,16 @@ export const handleUserSearch = (users, setSearchedUsers, value) => {
             user.lname.toLowerCase().includes(value.toLowerCase()) ||
             user.email.toLowerCase().includes(value.toLowerCase()) ||
             user.phone.toLowerCase().includes(value.toLowerCase())
+        )
+    );
+};
+
+export const handleNewsSearch = (news, setSearchedNews, value) => {
+    setSearchedNews(
+        news.filter(article =>
+            article.title.toLowerCase().includes(value.toLowerCase()) ||
+            article.description.toLowerCase().includes(value.toLowerCase()) ||
+            article.authorName.toLowerCase().includes(value.toLowerCase())
         )
     );
 };

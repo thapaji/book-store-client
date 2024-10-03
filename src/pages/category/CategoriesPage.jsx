@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { DefaultLayout } from "../../components/layout/DefaultLayout";
 import { Col, Row, Button, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
@@ -36,7 +36,7 @@ const CategoriesPage = () => {
   return (
     <DefaultLayout pageTitle={"Categories"}>
       <Container>
-        <Row className="mt-4">
+        <Row className="mt-5">
           <Col>{categories.length} categories found</Col>
           <Col>
             <input
@@ -47,7 +47,6 @@ const CategoriesPage = () => {
             />
           </Col>
         </Row>
-        <hr />
         {categories.map((category, i) => {
           const booksInCategory = books.filter((book) => book.category === category).slice(0, 4);
           return (
