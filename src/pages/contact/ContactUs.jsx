@@ -1,10 +1,27 @@
-import React from "react";
 import { DefaultLayout } from "../../components/layout/DefaultLayout";
-import { Parallax } from "react-parallax";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { AiOutlinePhone, AiOutlineMail, AiOutlineHome } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { postNewContactAction } from "../../features/contact/contactAction";
+import { useState } from "react";
 
 const ContactUs = () => {
+  const dispatch = useDispatch();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(postNewContactAction(formData));
+  };
+
   return (
     <DefaultLayout pageTitle="We'd Love to Hear From You">
       <Container className="my-4">
@@ -16,28 +33,53 @@ const ContactUs = () => {
         </Row>
         <Row className="contact-form">
           <Col lg={{ span: 6, offset: 3 }}>
-            <Form>
+            <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="name">
                 <Form.Label>Your Name</Form.Label>
-                <Form.Control type="text" placeholder="Enter your name" />
+                <Form.Control
+                  type="text"
+                  name="name"
+                  placeholder="Enter your name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Your Email</Form.Label>
-                <Form.Control type="email" placeholder="Enter your email" />
+                <Form.Control
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="message">
                 <Form.Label>Your Message</Form.Label>
-                <Form.Control as="textarea" rows={5} placeholder="Write your message" />
+                <Form.Control
+                  as="textarea"
+                  rows={5}
+                  name="message"
+                  placeholder="Write your message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                />
               </Form.Group>
 
               <Button variant="warning" type="submit" className="w-100">
-                Send Message
+                {/* {isLoading ? "Sending..." : "Send Message"} */}Send Message
               </Button>
+              {/* {message && <p className="text-success mt-3">{message}</p>}
+              {error && <p className="text-danger mt-3">{error}</p>} */}
             </Form>
           </Col>
         </Row>
+        {/* Contact info section */}
         <Row className="mt-4">
           <Col lg={4} className="text-center">
             <AiOutlinePhone size={50} className="mb-3" />
@@ -55,6 +97,7 @@ const ContactUs = () => {
             <p>13A/8-10 King St, Rockdale NSW 2216</p>
           </Col>
         </Row>
+        {/* Google Maps */}
         <Row className="mt-5">
           <Col>
             <h4 className="text-center mb-4">Find Us on the Map</h4>
