@@ -17,65 +17,45 @@ const ContactUs = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(postNewContactAction(formData));
+    const status = await dispatch(postNewContactAction(formData));
+
+    status === "success" &&
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+      });
   };
 
   return (
     <DefaultLayout pageTitle="We'd Love to Hear From You">
       <Container className="my-4">
         <Row className="text-center">
-          <p className="service-description">
-            Whether you have questions, feedback, or just want to say hi, we're here to help. Reach
-            out to us and we’ll get back to you as soon as possible!
-          </p>
+          <p className="service-description">Whether you have questions, feedback, or just want to say hi, we're here to help. Reach out to us and we’ll get back to you as soon as possible!</p>
         </Row>
         <Row className="contact-form">
           <Col lg={{ span: 6, offset: 3 }}>
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="name">
                 <Form.Label>Your Name</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="name"
-                  placeholder="Enter your name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
+                <Form.Control type="text" name="name" placeholder="Enter your name" value={formData.name} onChange={handleChange} required />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Your Email</Form.Label>
-                <Form.Control
-                  type="email"
-                  name="email"
-                  placeholder="Enter your email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
+                <Form.Control type="email" name="email" placeholder="Enter your email" value={formData.email} onChange={handleChange} required />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="message">
                 <Form.Label>Your Message</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows={5}
-                  name="message"
-                  placeholder="Write your message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                />
+                <Form.Control as="textarea" rows={5} name="message" placeholder="Write your message" value={formData.message} onChange={handleChange} required />
               </Form.Group>
 
               <Button variant="warning" type="submit" className="w-100">
-                {/* {isLoading ? "Sending..." : "Send Message"} */}Send Message
+                Send Message
               </Button>
-              {/* {message && <p className="text-success mt-3">{message}</p>}
-              {error && <p className="text-danger mt-3">{error}</p>} */}
             </Form>
           </Col>
         </Row>

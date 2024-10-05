@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Button, Col, Row, Table, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllContactAction, markAsReadAction } from "../../features/contact/contactAction";
+import { getAllContactAction, markAsReadAction, deleteContactAction } from "../../features/contact/contactAction";
+import ConfirmModal from "../customModel/ConfirmModal";
+import { FaTrash } from "react-icons/fa";
+import { handleMessageSearch } from "../../helpers/handleSearch";
 
 export const MessageTable = () => {
   const dispatch = useDispatch();
@@ -9,6 +12,8 @@ export const MessageTable = () => {
   const [searchedContacts, setSearchedContacts] = useState([]);
   const [clickedContact, setClickedContact] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [contactIdToDelete, setContactIdToDelete] = useState("");
 
   useEffect(() => {
     dispatch(getAllContactAction());
@@ -28,9 +33,26 @@ export const MessageTable = () => {
     }
   };
 
+  const handleSearch = (e) => {
+    const { value } = e.target;
+    handleMessageSearch(contacts, setSearchedContacts, value);
+  };
+
   const handleClose = () => {
     setShowModal(false);
     setClickedContact(null);
+  };
+
+  const handleDelete = (contact) => {
+    setContactIdToDelete(contact._id);
+    setShowConfirm(true);
+  };
+
+  const handleConfirmDelete = () => {
+    if (contactIdToDelete) {
+      dispatch(deleteContactAction(contactIdToDelete));
+      setContactIdToDelete("");
+    }
   };
 
   return (
@@ -38,12 +60,7 @@ export const MessageTable = () => {
       <Row>
         <Col>{contacts.length} messages found</Col>
         <Col>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search by Contact Name"
-            // handle search functionality here
-          />
+          <input type="text" className="form-control" placeholder="Search by Name, Email, Date" onChange={handleSearch} />
         </Col>
       </Row>
       <hr />
@@ -63,22 +80,24 @@ export const MessageTable = () => {
                 key={contact._id}
                 style={{
                   fontWeight: contact.status === "read" ? "normal" : "bold",
-                  color: contact.isRead ? "black" : "green",
-                  cursor: "pointer", // Cursor style added here
+                  cursor: "pointer",
                 }}
-                onClick={() => handleModalShow(contact)}
               >
-                <td>{i + 1}</td>
-                <td>{contact.name}</td>
-                <td>{contact.email}</td>
-                <td>{contact.submittedAt.slice(0, 10)}</td>
+                <td onClick={() => handleModalShow(contact)}>{i + 1}</td>
+                <td onClick={() => handleModalShow(contact)}>{contact.name}</td>
+                <td onClick={() => handleModalShow(contact)}>{contact.email}</td>
+                <td onClick={() => handleModalShow(contact)}> {contact.submittedAt.slice(0, 10)}</td>
+                <td>
+                  <Button variant="outline-danger" onClick={() => handleDelete(contact)}>
+                    <FaTrash />
+                  </Button>
+                </td>
               </tr>
             ))}
           </tbody>
         </Table>
       </Row>
 
-      {/* Message Modal */}
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Message Details</Modal.Title>
@@ -107,6 +126,13 @@ export const MessageTable = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      <ConfirmModal
+        show={showConfirm}
+        setShow={setShowConfirm}
+        onConfirm={handleConfirmDelete}
+        message="Are you sure you want to delete this message?"
+      />
     </>
   );
 };

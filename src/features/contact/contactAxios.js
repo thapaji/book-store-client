@@ -27,3 +27,8 @@ export const markAsRead = async (_id, contact) => {
   const axiosObj = { method: "PUT", url: contactEp + "/" + _id, data: contact, isPrivate: true };
   return await apiProcessor(axiosObj);
 };
+
+export const deleteContact = async (_id) => {
+  const axiosObj = { method: "DELETE", url: contactEp + "/" + _id, isPrivate: true };
+  return await apiProcessor(axiosObj);
+};
