@@ -41,6 +41,7 @@ import NewsList from "./pages/news/NewsList";
 import AddNews from "./pages/news/AddNews";
 import EditNews from "./pages/news/EditNews";
 import NewsLanding from "./pages/news/NewsLanding";
+import Messages from "./pages/contact/Messages";
 
 function App() {
   const dispatch = useDispatch();
@@ -63,7 +64,10 @@ function App() {
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/services/rentals" element={<BookRentals />} />
         <Route path="/services/ebooks" element={<EBookDownloads />} />
-        <Route path="/services/recommendations" element={<BookRecommendations />} />
+        <Route
+          path="/services/recommendations"
+          element={<BookRecommendations />}
+        />
         <Route path="/services/membership" element={<MembershipOptions />} />
         <Route path="/services/events" element={<Events />} />
         <Route path="/services/support" element={<CustomerSupport />} />
@@ -92,6 +96,7 @@ function App() {
         <Route path="/admin/news" element={<NewsList />} />
         <Route path="/admin/news/new" element={<AddNews />} />
         <Route path="/admin/news/edit/:_id" element={<EditNews />} />
+        <Route path="/admin/messages" element={<Messages />} />
       </Routes>
       <ToastContainer />
     </>
