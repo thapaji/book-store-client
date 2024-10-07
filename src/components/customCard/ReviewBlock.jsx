@@ -15,15 +15,14 @@ export const ReviewBlock = () => {
         Person Name
       </Row>
       <Row>
-        <Stars /> <Col>title</Col>{" "}
+        <Stars stars={3.5} readOnly={true} /> <Col>title</Col>{" "}
       </Row>
       <Row>
         <small>Date:24-04-20024</small>
       </Row>
       <Row>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga eius amet eaque iste placeat,
-        culpa delectus laudantium dolor illo rerum libero quidem commodi obcaecati impedit dicta in
-        odit perspiciatis facere?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga eius amet eaque iste placeat, culpa delectus laudantium dolor illo rerum libero
+        quidem commodi obcaecati impedit dicta in odit perspiciatis facere?
       </Row>
     </>
   );

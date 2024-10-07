@@ -14,7 +14,7 @@ const MyBook = () => {
 
   return (
     <UserLayout pageTitle={"My Books"}>
-      <BorrowTable borrows={borrows} />
+      <BorrowTable borrows={borrows} page={"myBooks"} />
     </UserLayout>
   );
 };

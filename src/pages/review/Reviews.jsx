@@ -12,7 +12,7 @@ const isPrivate = true;
 const Reviews = () => {
   const { allReviews } = useSelector((state) => state.reviewInfo);
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(getReviews(isPrivate));
   }, [dispatch]);
@@ -54,12 +54,7 @@ const Reviews = () => {
               <tr key={item._id}>
                 <td>{i + 1}</td>
                 <td>
-                  <Form.Check
-                    type="switch"
-                    checked={item.status === "active"}
-                    onChange={handleOnSwitchChange}
-                    value={item._id}
-                  />
+                  <Form.Check type="switch" checked={item.status === "active"} onChange={handleOnSwitchChange} value={item._id} />
                   {item.status}
                 </td>
                 <td>

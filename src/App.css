@@ -138,3 +138,19 @@ h2 {
   border-radius: 10px;
   overflow: hidden;
 }
+
+.star {
+  font-size: 30px;
+  margin: 0 2px;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.star:hover {
+  color: #ffd700;
+}
+
+.star.selected {
+  color: #ffd700;
+}

@@ -64,10 +64,7 @@ function App() {
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/services/rentals" element={<BookRentals />} />
         <Route path="/services/ebooks" element={<EBookDownloads />} />
-        <Route
-          path="/services/recommendations"
-          element={<BookRecommendations />}
-        />
+        <Route path="/services/recommendations" element={<BookRecommendations />} />
         <Route path="/services/membership" element={<MembershipOptions />} />
         <Route path="/services/events" element={<Events />} />
         <Route path="/services/support" element={<CustomerSupport />} />

@@ -17,9 +17,7 @@ const BookLanding = () => {
 
   const handleBookBorrow = () => {
     if (window.confirm("Are you sure you want to borrow this book?")) {
-      dispatch(
-        postNewBorrowAction({ bookId: book._id, bookTitle: book?.title, thumbnail: book.thumbnail })
-      );
+      dispatch(postNewBorrowAction({ bookId: book._id, bookTitle: book?.title, thumbnail: book.thumbnail }));
     }
   };
 
@@ -36,7 +34,7 @@ const BookLanding = () => {
               <p>
                 {book?.author} - {book?.publishedYear}
               </p>
-              <Stars stars={3.5} />
+              <Stars stars={3.5} readOnly={true} />
               <p>{book?.description.slice(0, 50)}...</p>
               {user?._id ? (
                 <Button variant="warning" onClick={handleBookBorrow}>
