@@ -60,18 +60,16 @@ const SignIn = () => {
           <img src={signin} alt="Sign In" style={{ width: "100%" }} />
         </Col>
         <Col>
-          <Form
-            onSubmit={handleSubmit}
-            className="shadow-lg p-5 rounded m-auto"
-            style={{ width: "450px" }}
-          >
+          <Form onSubmit={handleSubmit} className="shadow-lg p-5 rounded m-auto" style={{ width: "450px" }}>
             <h2>Sign in</h2>
             <hr />
             {inputs.map((input, i) => (
               <CustomInput key={i} {...input} />
             ))}
             <div className="d-grid">
-              <Button type="submit">Submit</Button>
+              <Button type="submit" variant="warning">
+                Submit
+              </Button>
             </div>
           </Form>
         </Col>

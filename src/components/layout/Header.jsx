@@ -1,15 +1,7 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import {
-  FaBookReader,
-  FaNewspaper,
-  FaRegListAlt,
-  FaSignInAlt,
-  FaSignOutAlt,
-  FaTools,
-  FaUserPlus,
-} from "react-icons/fa";
+import { FaBookReader, FaNewspaper, FaRegListAlt, FaSignInAlt, FaSignOutAlt, FaTools, FaUserPlus } from "react-icons/fa";
 import { FaArrowRight, FaHouse, FaUser, FaPhone } from "react-icons/fa6"; // Added FaPhone for contact
 import { RxDashboard } from "react-icons/rx";
 import { useSelector } from "react-redux";

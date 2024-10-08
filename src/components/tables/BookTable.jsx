@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Row, Spinner, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  deleteBookAction,
-  getAllBooksAction,
-  updateBookAction,
-} from "../../features/books/bookAction";
+import { deleteBookAction, getAllBooksAction, updateBookAction } from "../../features/books/bookAction";
 import { Link, useNavigate } from "react-router-dom";
 import { FaChevronDown, FaPlus } from "react-icons/fa";
 import { AddStockModel } from "../../components/customModel/AddStockModel";
@@ -62,16 +58,11 @@ export const BookTable = () => {
         <Col>{books.length} books found</Col>
         <Col>
           {" "}
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search by Book Name"
-            onChange={handleSearch}
-          />
+          <input type="text" className="form-control" placeholder="Search by Book Name" onChange={handleSearch} />
         </Col>
         <Col className="text-end">
           <Link to="/admin/books/new">
-            <Button variant="primary">
+            <Button variant="warning">
               <FaPlus />
             </Button>
           </Link>
@@ -118,16 +109,13 @@ export const BookTable = () => {
                 <td>
                   <div className="hover-container">
                     <div className="hover-trigger">
-                      <Button>
+                      <Button variant="warning">
                         Actions <FaChevronDown />
                       </Button>
                     </div>
                     <div className="hover-content">
                       <div className="d-grid">
-                        <Button
-                          variant="outline-primary"
-                          onClick={() => navigate(`/admin/book/edit/${book._id}`)}
-                        >
+                        <Button variant="outline-primary" onClick={() => navigate(`/admin/book/edit/${book._id}`)}>
                           Edit
                         </Button>
                       </div>

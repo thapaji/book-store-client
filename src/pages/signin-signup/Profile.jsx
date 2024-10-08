@@ -53,7 +53,7 @@ const Profile = () => {
         <div className="text-center mt-4">
           <Row>
             <Col md={6} className="mb-2 d-grid">
-              <Button variant="primary">Edit Profile</Button>
+              <Button variant="warning">Edit Profile</Button>
             </Col>
             <Col md={6} className="mb-2 d-grid">
               <Button variant="secondary">Change Password</Button>

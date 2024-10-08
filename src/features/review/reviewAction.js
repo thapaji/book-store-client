@@ -1,4 +1,4 @@
-import { fetchReviews, postNewReview, updateReview } from "./reviewAxios";
+import { fetchReviews, fetchUserReviews, postNewReview, updateReview } from "./reviewAxios";
 import { toast } from "react-toastify";
 import { setAllReview, setPubReviews, updateReveiwStatus } from "./reviewSlice";
 
@@ -14,8 +14,9 @@ export const addNewReviewAction = (obj) => async (dispatch) => {
   toast[status](message);
 
   if (status === "success") {
-    return true;
+    dispatch(getReviews());
   }
+  return status;
 };
 
 export const updateReviewAction = (obj) => async (dispatch) => {
@@ -35,9 +36,23 @@ export const updateReviewAction = (obj) => async (dispatch) => {
 };
 
 // get reviews
-export const getReviews = (isPrivate) => async (dispatch) => {
-  const { status, reviews } = await fetchReviews(isPrivate);
+export const getReviews =
+  (isPrivate, userReviews = false) =>
+  async (dispatch) => {
+    console.log(isPrivate, userReviews);
+    if (!userReviews) {
+      const { status, reviews } = await fetchReviews(isPrivate);
+      if (status) {
+        isPrivate ? dispatch(setAllReview(reviews)) : dispatch(setPubReviews(reviews));
+      }
+      return;
+    }
+    dispatch(getUserReviews());
+  };
+
+export const getUserReviews = () => async (dispatch) => {
+  const { status, reviews } = await fetchUserReviews(true);
   if (status) {
-    isPrivate ? dispatch(setAllReview(reviews)) : dispatch(setPubReviews(reviews));
+    dispatch(setAllReview(reviews));
   }
 };

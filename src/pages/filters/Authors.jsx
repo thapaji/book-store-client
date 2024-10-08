@@ -18,7 +18,6 @@ const Authors = () => {
     return uniqueAuthors;
   }, []);
 
-
   useEffect(() => {
     setAuthors(allAuthors);
   }, []);
@@ -34,11 +33,11 @@ const Authors = () => {
         <Col>{authors.length} authors found</Col>
         <Col>
           {" "}
-          <input type="text" className="form-control" placeholder="Search for Authors" onChange={handleSearch}/>
+          <input type="text" className="form-control" placeholder="Search for Authors" onChange={handleSearch} />
         </Col>
         <Col className="text-end">
           <Link to="/admin/books/new">
-            <Button variant="primary">
+            <Button variant="warning">
               <FaPlus />
             </Button>
           </Link>

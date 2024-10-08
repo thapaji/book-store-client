@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import { returnBorrowAction } from "../../features/borrow/borrowAction";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ReviewModal from "../../components/customModel/ReviewModal";
+import { getReviews } from "../../features/review/reviewAction";
 
 export const BorrowTable = ({ borrows = [], page = "" }) => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const [selectedBookId, setSelectedBookId] = useState(null);
+
+  const { allReviews } = useSelector((state) => state.reviewInfo);
+
+  useEffect(() => {
+    dispatch(getReviews(true, true));
+  }, [dispatch]);
 
   const handleShow = (bookId) => {
     setSelectedBookId(bookId);
@@ -17,6 +24,10 @@ export const BorrowTable = ({ borrows = [], page = "" }) => {
   const handleClose = () => {
     setShowModal(false);
     setSelectedBookId(null);
+  };
+
+  const userHasReviewedBook = (bookId) => {
+    return allReviews.some((review) => review.bookId === bookId);
   };
 
   return (
@@ -46,15 +57,15 @@ export const BorrowTable = ({ borrows = [], page = "" }) => {
               <td>{borrow.createdAt.slice(0, 10)}</td>
               <td>
                 {!borrow.isReturned ? (
-                  <Button variant="success" onClick={() => dispatch(returnBorrowAction({ _id: borrow._id, bookId: borrow.bookId }))}>
+                  <Button variant="warning" onClick={() => dispatch(returnBorrowAction({ _id: borrow._id, bookId: borrow.bookId }))}>
                     Return Book
                   </Button>
                 ) : (
                   <div>
                     <p>Returned</p>
-                    {page === "myBooks" && (
-                      <Button variant="warning" onClick={() => handleShow(borrow.bookId)}>
-                        Leave a review
+                    {page === "myBooks" && !userHasReviewedBook(borrow.bookId._id) && (
+                      <Button variant="outline-success" onClick={() => handleShow(borrow.bookId)}>
+                        Leave a Review
                       </Button>
                     )}
                   </div>

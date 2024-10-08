@@ -30,3 +30,12 @@ export const fetchReviews = async (isPrivate) => {
   };
   return apiProcessor(axiosObj);
 };
+
+export const fetchUserReviews = async (isPrivate) => {
+  const axiosObj = {
+    method: "get",
+    url: reviewEP + "/user",
+    isPrivate,
+  };
+  return apiProcessor(axiosObj);
+};

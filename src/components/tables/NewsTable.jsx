@@ -43,16 +43,11 @@ const NewsTable = () => {
       <Row>
         <Col>{news.length} news articles found</Col>
         <Col>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search by Title/Author"
-            onChange={handleSearch}
-          />
+          <input type="text" className="form-control" placeholder="Search by Title/Author" onChange={handleSearch} />
         </Col>
         <Col className="text-end">
           <Link to="/admin/news/new">
-            <Button variant="primary">
+            <Button variant="warning">
               <FaPlus />
             </Button>
           </Link>
@@ -86,16 +81,13 @@ const NewsTable = () => {
               <td>
                 <div className="hover-container">
                   <div className="hover-trigger">
-                    <Button>
+                    <Button variant="warning">
                       Actions <FaChevronDown />
                     </Button>
                   </div>
                   <div className="hover-content">
                     <div className="d-grid">
-                      <Button
-                        variant="outline-success"
-                        onClick={() => navigate(`/admin/news/edit/${item._id}`)}
-                      >
+                      <Button variant="outline-success" onClick={() => navigate(`/admin/news/edit/${item._id}`)}>
                         Edit
                       </Button>
                     </div>

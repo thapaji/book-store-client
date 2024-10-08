@@ -12,11 +12,22 @@ const ReviewModal = ({ show, handleClose, bookId }) => {
   const [isEditing, setIsEditing] = useState(true);
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const review = { title, message, ratings, bookId, userId: user._id };
-    dispatch(addNewReviewAction(review));
-    setIsEditing(false);
+
+    // Dispatch the action to add a new review
+    const status = await dispatch(addNewReviewAction(review));
+
+    // Check if status indicates success
+    if (status === "success") {
+      // Reset form fields
+      setTitle("");
+      setMessage("");
+      setRatings(0);
+      // Close the modal
+      handleClose(true);
+    }
   };
 
   return (

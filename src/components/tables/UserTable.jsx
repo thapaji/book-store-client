@@ -57,16 +57,11 @@ export const UserTable = ({ role = "student" }) => {
         <Col>{searchedUsers?.length + " " + role + "s"} found</Col>
         <Col>
           {" "}
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search by User Name Email or Phone"
-            onChange={handleSearch}
-          />
+          <input type="text" className="form-control" placeholder="Search by User Name Email or Phone" onChange={handleSearch} />
         </Col>
         <Col className="text-end">
           <Link to="/admin/users/new">
-            <Button variant="primary">
+            <Button variant="warning">
               <FaPlus />
             </Button>
           </Link>
@@ -96,16 +91,13 @@ export const UserTable = ({ role = "student" }) => {
                 <td>
                   <div className="hover-container">
                     <div className="hover-trigger">
-                      <Button>
+                      <Button variant="warning">
                         Actions <FaChevronDown />
                       </Button>
                     </div>
                     <div className="hover-content">
                       <div className="d-grid">
-                        <Button
-                          variant="outline-primary"
-                          onClick={() => navigate(`/admin/user/edit/${user._id}`)}
-                        >
+                        <Button variant="outline-primary" onClick={() => navigate(`/admin/user/edit/${user._id}`)}>
                           Edit
                         </Button>
                       </div>

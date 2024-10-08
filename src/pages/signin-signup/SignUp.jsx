@@ -75,7 +75,7 @@ const SignUp = () => {
             )}
 
             <div className="d-grid">
-              <Button type="submit" disabled={error}>
+              <Button type="submit" disabled={error} variant="warning">
                 Submit
               </Button>
             </div>
