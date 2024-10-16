@@ -21,7 +21,6 @@ const Reviews = () => {
     const { checked, value } = e.target;
 
     if (window.confirm("Are you sure, you want to change the status?")) {
-      console.log(checked, value);
       dispatch(
         updateReviewAction({
           status: checked ? "active" : "inactive",
@@ -35,7 +34,7 @@ const Reviews = () => {
     <UserLayout pageTitle="All Reviews List">
       <div>
         <div className="d-flex justify-content-between mb-4">
-          <div>30 Reviews found!</div>
+          <div>{allReviews?.length} Reviews found!</div>
         </div>
         <hr />
         <Table striped bordered hover>
@@ -43,9 +42,9 @@ const Reviews = () => {
             <tr>
               <th>#</th>
               <th>Status</th>
-              <th> Thumbnail</th>
-              <th>Student Name</th>
-              <th>Review</th>
+              <th style={{ width: "33%" }}>Book</th>
+              <th>User Name</th>
+              <th style={{ width: "30%" }}>Review</th>
               <th>Delete</th>
             </tr>
           </thead>
@@ -58,13 +57,14 @@ const Reviews = () => {
                   {item.status}
                 </td>
                 <td>
-                  <Link to={"/book/" + item.bookId} target="_blank">
-                    <img src={item.thumbnail} alt="" width={"60px"} />
+                  <Link to={"/book/" + item.bookId._id}>
+                    <h3>{item.bookId.title}</h3>
+                    <img src={item.bookId.thumbnail} alt="" />
                   </Link>
                 </td>
-                <td>{item.userName}</td>
+                <td>{item.userId.fname + " " + item.userId.lname}</td>
                 <td>
-                  <h2> {item.tilte}</h2>
+                  <h3> {item.tilte}</h3>
                   <div>
                     <Stars stars={item.ratings} />{" "}
                   </div>

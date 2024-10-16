@@ -39,7 +39,6 @@ export const updateReviewAction = (obj) => async (dispatch) => {
 export const getReviews =
   (isPrivate, userReviews = false) =>
   async (dispatch) => {
-    console.log(isPrivate, userReviews);
     if (!userReviews) {
       const { status, reviews } = await fetchReviews(isPrivate);
       if (status) {
