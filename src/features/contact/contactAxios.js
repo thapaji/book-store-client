@@ -32,3 +32,8 @@ export const deleteContact = async (_id) => {
   const axiosObj = { method: "DELETE", url: contactEp + "/" + _id, isPrivate: true };
   return await apiProcessor(axiosObj);
 };
+
+export const fetchUnreadMessages = async () => {
+  const axiosObj = { method: "GET", url: contactEp + "/unread", isPrivate: true };
+  return await apiProcessor(axiosObj);
+};
