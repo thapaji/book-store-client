@@ -9,6 +9,7 @@ import { fetchBorrowsFromDate } from "../../features/borrow/borrowAxios";
 import { getAllContactAction } from "../../features/contact/contactAction";
 import { fetchUnreadMessages } from "../../features/contact/contactAxios";
 import { getAllBorrowsAction } from "../../features/borrow/borrowAction";
+import { Background } from "react-parallax";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement, ArcElement);
 
@@ -181,6 +182,7 @@ const Dashboard = () => {
       {
         label: "Messages Received",
         data: getMessagesReceivedData(contacts),
+        backgroundColor: "#e91e63",
       },
     ],
   };

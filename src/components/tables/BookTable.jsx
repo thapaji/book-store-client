@@ -94,17 +94,17 @@ export const BookTable = () => {
                     <h2>{book.title}</h2>
                     <div style={{ color: "black" }}>{book.author}</div>
                     <div style={{ color: "black" }}>{book.publishedYear}</div>
-                    <div style={{ color: "black" }}>
-                      Status:
-                      <Form.Check
-                        type="switch"
-                        label={book.status === "active" ? "Active" : "Inactive"}
-                        onChange={() => handleToggle(book)}
-                        checked={book.status === "active"}
-                        className={book.status === "active" ? "text-success" : "text-danger"}
-                      />
-                    </div>
                   </Link>
+                  <div style={{ color: "black" }}>
+                    Status:
+                    <Form.Check
+                      type="switch"
+                      label={book.status === "active" ? "Active" : "Inactive"}
+                      onChange={() => handleToggle(book)}
+                      checked={book.status === "active"}
+                      className={book.status === "active" ? "text-success" : "text-danger"}
+                    />
+                  </div>
                 </td>
                 <td>
                   <div className="hover-container">

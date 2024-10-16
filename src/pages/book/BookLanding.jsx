@@ -24,13 +24,15 @@ const BookLanding = () => {
     }
   }, [book]);
 
-  console.log(book);
-
   const handleBookBorrow = () => {
     if (window.confirm("Are you sure you want to borrow this book?")) {
       dispatch(postNewBorrowAction({ bookId: book._id, bookTitle: book?.title, thumbnail: book.thumbnail }));
     }
   };
+
+  const isOutOfStock = book?.count <= book?.borrowed;
+  const remainingCopies = book?.count - book?.borrowed;
+  const isLastCopy = remainingCopies === 1;
 
   return (
     <DefaultLayout pageTitle={"Book: " + book?.title}>
@@ -41,17 +43,19 @@ const BookLanding = () => {
           </Col>
           <Col md={6} className="col">
             <Row>
-              {/* <h1>{book?.title}</h1> */}
               <p>
                 {book?.author} - {book?.publishedYear}
               </p>
               <Stars stars={averageRating} readOnly={true} />
               <p>{book?.description.slice(0, 50)}...</p>
               {user?._id ? (
-                <Button variant="warning" onClick={handleBookBorrow}>
-                  Borrow Book Now
-                  {/* {book?.isAvailable?"Borrow Book Now":"Expected Available  Date : "+book?.expectedAvailable.slice(0,10)}  */}
-                </Button>
+                isOutOfStock ? (
+                  <p className="text-danger">Out of Stock</p>
+                ) : (
+                  <Button variant="warning" onClick={handleBookBorrow}>
+                    {isLastCopy ? "Get Yours Now!" : "Borrow Book Now"}
+                  </Button>
+                )
               ) : (
                 <Link to="/signin" state={{ from: { location } }}>
                   <Button variant="warning">Login to borrow</Button>

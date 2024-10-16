@@ -45,15 +45,15 @@ const Home = () => {
   return (
     <DefaultLayout>
       <Container className="mt-5">
-        {!user?._id && (
-          <Row className="pt-5 mb-5">
-            <Col>
-              <h2 className="mt-5">Read, Explore, Connect</h2>
-              <p className="mt-5">
-                We are more than just a place to check out books. We're a vibrant community hub dedicated to enriching your life through knowledge,
-                culture, and connection. We inspire lifelong learning, foster creativity, and empower our community through free access to information
-                and innovative library services.
-              </p>
+        <Row className="pt-5 mb-5">
+          <Col>
+            <h2 className="mt-5">Read, Explore, Connect</h2>
+            <p className="mt-5">
+              We are more than just a place to check out books. We're a vibrant community hub dedicated to enriching your life through knowledge,
+              culture, and connection. We inspire lifelong learning, foster creativity, and empower our community through free access to information
+              and innovative library services.
+            </p>
+            {!user?._id && (
               <div className="d-grid mt-5 pt-5">
                 <Button onClick={handleSignUpClick} className="mb-3 btn-warning">
                   Join The Community Now !!!
@@ -62,12 +62,13 @@ const Home = () => {
                   Already a member? Sign in
                 </Button>
               </div>
-            </Col>
-            <Col>
-              <img src={bookImg} alt="book_img" />
-            </Col>
-          </Row>
-        )}
+            )}
+          </Col>
+          <Col>
+            <img src={bookImg} alt="book_img" />
+          </Col>
+        </Row>
+
         <Row>
           <Col md={9}>
             <Row>
