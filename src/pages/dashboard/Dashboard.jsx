@@ -8,6 +8,7 @@ import { fetchUsersAction } from "../../features/users/userAction";
 import { fetchBorrowsFromDate } from "../../features/borrow/borrowAxios";
 import { getAllContactAction } from "../../features/contact/contactAction";
 import { fetchUnreadMessages } from "../../features/contact/contactAxios";
+import { getAllBorrowsAction } from "../../features/borrow/borrowAction";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement, ArcElement);
 
@@ -41,6 +42,7 @@ const Dashboard = () => {
 
     dispatch(getAllContactAction());
     dispatch(fetchUsersAction("student"));
+    dispatch(getAllBorrowsAction());
     fetchBorrows();
   }, [dispatch]);
 
