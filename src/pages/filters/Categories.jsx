@@ -45,10 +45,7 @@ const Categories = () => {
       </Row>
       <hr />
       {categories.map((category, i) => (
-        <>
-          <FilterCmp key={i} filter={{ key: "category", value: category }} />
-          <hr />
-        </>
+        <FilterCmp key={i} filter={{ key: "category", value: category }} />
       ))}
     </UserLayout>
   );

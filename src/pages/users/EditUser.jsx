@@ -14,7 +14,7 @@ const EditUser = () => {
   const { selectedUser } = useSelector((state) => state.userInfo);
 
   useEffect(() => {
-    console.log(_id,form._id)
+    // console.log(_id,form._id)
     if (_id !== form?._id) {
       dispatch(getSelectedUserObj(_id));
       setForm(selectedUser);

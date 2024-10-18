@@ -8,8 +8,8 @@ export const postNewNews = async (news) => {
   return await apiProcessor(axiosObj);
 };
 
-export const fetchNews = async (isPrivate) => {
-  const axiosObj = { method: "GET", url: newsEp, isPrivate: true };
+export const fetchNews = async () => {
+  const axiosObj = { method: "GET", url: newsEp };
   return await apiProcessor(axiosObj);
 };
 

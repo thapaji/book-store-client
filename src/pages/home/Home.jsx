@@ -8,6 +8,7 @@ import { getAllNewsAction } from "../../features/news/newsAction";
 import { handleBookSearch } from "../../helpers/handleSearch";
 import bookImg from "../../assets/books.svg";
 import OtherServices from "../../components/services/OtherServices";
+import { getAllBooksAction } from "../../features/books/bookAction";
 
 const Home = () => {
   const { books } = useSelector((state) => state.bookInfo);
@@ -20,9 +21,10 @@ const Home = () => {
 
   useEffect(() => {
     if (news.length < 1) {
-      dispatch(getAllNewsAction(true));
+      dispatch(getAllBooksAction());
+      dispatch(getAllNewsAction());
     }
-  }, [dispatch, news.length]);
+  }, [dispatch, news.length, books.length]);
 
   useEffect(() => {
     setSearchedBooks(books);

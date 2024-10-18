@@ -9,7 +9,6 @@ import { fetchBorrowsFromDate } from "../../features/borrow/borrowAxios";
 import { getAllContactAction } from "../../features/contact/contactAction";
 import { fetchUnreadMessages } from "../../features/contact/contactAxios";
 import { getAllBorrowsAction } from "../../features/borrow/borrowAction";
-import { Background } from "react-parallax";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement, ArcElement);
 
@@ -195,9 +194,7 @@ const Dashboard = () => {
             <Card className="text-center" style={{ backgroundColor: "#ff9800", color: "#fff" }}>
               <Card.Body>
                 <Card.Title>Total Books</Card.Title>
-                <Card.Text>
-                  <h2>{books.length}</h2>
-                </Card.Text>
+                <h2>{books.length}</h2>
               </Card.Body>
             </Card>
           </Col>
@@ -205,9 +202,7 @@ const Dashboard = () => {
             <Card className="text-center" style={{ backgroundColor: "#ff5722", color: "#fff" }}>
               <Card.Body>
                 <Card.Title>Active Members</Card.Title>
-                <Card.Text>
-                  <h2>{users.length}</h2>
-                </Card.Text>
+                <h2>{users.length}</h2>
               </Card.Body>
             </Card>
           </Col>
@@ -215,9 +210,7 @@ const Dashboard = () => {
             <Card className="text-center" style={{ backgroundColor: "#03a9f4", color: "#fff" }}>
               <Card.Body>
                 <Card.Title>Borrows This Month</Card.Title>
-                <Card.Text>
-                  <h2>{booksBorrowedThisWeek}</h2>
-                </Card.Text>
+                <h2>{booksBorrowedThisWeek}</h2>
               </Card.Body>
             </Card>
           </Col>
@@ -225,9 +218,7 @@ const Dashboard = () => {
             <Card className="text-center" style={{ backgroundColor: "#4caf50", color: "#fff" }}>
               <Card.Body>
                 <Card.Title>Unread Messages</Card.Title>
-                <Card.Text>
-                  <h2>{unreadMessage}</h2>
-                </Card.Text>
+                <h2>{unreadMessage}</h2>
               </Card.Body>
             </Card>
           </Col>

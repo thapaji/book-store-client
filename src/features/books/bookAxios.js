@@ -9,7 +9,7 @@ export const postNewBook = async (book) => {
 };
 
 export const fetchBooks = async (isPrivate) => {
-  const axiosObj = { method: "GET", url: isPrivate ? bookEp + "/all" : bookEp, isPrivate: true };
+  const axiosObj = { method: "GET", url: isPrivate ? bookEp + "/all" : bookEp, isPrivate };
   return await apiProcessor(axiosObj);
 };
 

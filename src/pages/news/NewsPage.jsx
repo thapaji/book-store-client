@@ -30,41 +30,22 @@ const NewsPage = () => {
         <Row className="mb-4">
           <Col>{news.length} news articles found</Col>
           <Col>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Search by Title/Author"
-              onChange={handleSearch}
-            />
+            <input type="text" className="form-control" placeholder="Search by Title/Author" onChange={handleSearch} />
           </Col>
         </Row>
         <Row>
           {searchedNews.map((article) => (
             <Col md={4} className="mb-4" key={article._id}>
               <Card className="h-100">
-                <Card.Img
-                  variant="top"
-                  src={article.imageUrl}
-                  alt={article.title}
-                  style={{ height: "200px", objectFit: "cover" }}
-                />
+                <Card.Img variant="top" src={article.imageUrl} alt={article.title} style={{ height: "200px", objectFit: "cover" }} />
                 <Card.Body>
                   <Card.Title>{article.title}</Card.Title>
                   <Card.Text>{article.description}</Card.Text>
-                  <Card.Text className="text-muted">
-                    <Row>
-                      <Col>
-                        {" "}
-                        <small>{article.createdAt.slice(0, 10)}</small>
-                      </Col>
-                      <Col>
-                        {" "}
-                        <small>{article.authorName}</small>
-                      </Col>
-                      <Col></Col>
-                    </Row>
-                  </Card.Text>
-                  <Link to={`/news/${article._id}`} className="btn btn-warning">
+                  <div className="d-flex justify-content-between align-items-center">
+                    <span className="text-muted">{new Date(article.createdAt).toLocaleDateString()}</span>
+                    <span className="text-muted">{article.authorName}</span>
+                  </div>
+                  <Link to={`/news/${article._id}`} className="btn btn-warning mt-4">
                     Read More
                   </Link>
                 </Card.Body>

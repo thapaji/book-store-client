@@ -9,7 +9,8 @@ export const FilterCmp = ({ filter }) => {
   const selectedBooks = books.filter((book) => book[filter.key]?.includes(filter.value));
   return (
     <Row className="mb-4">
-      <h4>{filter.value}</h4>
+      <h2 className="text-center mb-4 mt-5">{filter.value}</h2>
+
       <Col className="d-flex gap-2 flex-wrap">
         {selectedBooks.map((book) => (
           <Link key={book._id} to={"/book/" + book._id}>
@@ -17,6 +18,7 @@ export const FilterCmp = ({ filter }) => {
           </Link>
         ))}
       </Col>
+      <hr className="mt-4 mb-5" />
     </Row>
   );
 };
